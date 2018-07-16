@@ -1,5 +1,9 @@
 class CaregiversController < ApplicationController
 
+  def home
+    
+  end
+
   def new
     @caregiver = Caregiver.new
   end
