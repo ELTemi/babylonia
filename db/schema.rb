@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2018_07_16_162631) do
     t.string "meds"
     t.datetime "time_out"
     t.integer "baby_id"
-    t.integer "report_id"
     t.integer "care_giver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

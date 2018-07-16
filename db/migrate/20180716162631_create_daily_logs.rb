@@ -10,7 +10,6 @@ class CreateDailyLogs < ActiveRecord::Migration[5.2]
       t.string  :meds
       t.datetime  :time_out
       t.integer :baby_id
-      t.integer :report_id
       t.integer :care_giver_id
 
       t.timestamps
