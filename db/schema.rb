@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_16_161955) do
+ActiveRecord::Schema.define(version: 2018_07_16_162631) do
 
   create_table "babies", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,22 @@ ActiveRecord::Schema.define(version: 2018_07_16_161955) do
     t.integer "rating"
     t.text "address"
     t.boolean "availability"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "daily_logs", force: :cascade do |t|
+    t.datetime "time_in"
+    t.string "nap"
+    t.string "meal"
+    t.string "diaper"
+    t.string "play"
+    t.text "summary"
+    t.string "meds"
+    t.datetime "time_out"
+    t.integer "baby_id"
+    t.integer "report_id"
+    t.integer "care_giver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
