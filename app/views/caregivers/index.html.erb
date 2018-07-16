@@ -1,3 +1,9 @@
 <% @caregivers.each do |caregiver| %>
-  
+Name: <%= caregiver.name %><br>
+Age: <%= caregiver.age %><br>
+Picture<%= caregiver.picture%><br>
+Phone Number: <%= caregiver.phone_number%><br>
+Years of Experience<%= caregiver.experience%> Years <br>
+Rating: <%= caregiver.rating%> Stars <br>
+Home Address<%= caregiver.address%> <br>
 <% end %>
