@@ -1,6 +1,6 @@
-class CreateCareGivers < ActiveRecord::Migration[5.2]
+class CreateCaregivers < ActiveRecord::Migration[5.2]
   def change
-    create_table :care_givers do |t|
+    create_table :caregivers do |t|
       t.string :name
       t.string :email
       t.string :password_digest

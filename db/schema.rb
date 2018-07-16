@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 2018_07_16_162631) do
     t.string "picture"
     t.text "allergies"
     t.string "emergency_contact"
-    t.integer "care_giver_id"
+    t.integer "caregiver_id"
     t.integer "mom_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "care_givers", force: :cascade do |t|
+  create_table "caregivers", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_162631) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "daily_logs", force: :cascade do |t|
+  create_table "dailylogs", force: :cascade do |t|
     t.datetime "time_in"
     t.string "nap"
     t.string "meal"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_07_16_162631) do
     t.string "meds"
     t.datetime "time_out"
     t.integer "baby_id"
-    t.integer "care_giver_id"
+    t.integer "caregiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

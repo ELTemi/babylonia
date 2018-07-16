@@ -1,2 +1,0 @@
-class DailyLogsController < ApplicationController
-end

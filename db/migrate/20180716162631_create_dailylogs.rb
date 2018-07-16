@@ -1,6 +1,6 @@
-class CreateDailyLogs < ActiveRecord::Migration[5.2]
+class CreateDailylogs < ActiveRecord::Migration[5.2]
   def change
-    create_table :daily_logs do |t|
+    create_table :dailylogs do |t|
       t.datetime  :time_in
       t.string  :nap
       t.string  :meal
@@ -10,7 +10,7 @@ class CreateDailyLogs < ActiveRecord::Migration[5.2]
       t.string  :meds
       t.datetime  :time_out
       t.integer :baby_id
-      t.integer :care_giver_id
+      t.integer :caregiver_id
 
       t.timestamps
     end
