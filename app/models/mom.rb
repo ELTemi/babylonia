@@ -1,0 +1,2 @@
+class Mom < ApplicationRecord
+end
