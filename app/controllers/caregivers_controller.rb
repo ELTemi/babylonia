@@ -1,7 +1,7 @@
 class CaregiversController < ApplicationController
 
   def home
-    
+
   end
 
   def new
@@ -9,7 +9,13 @@ class CaregiversController < ApplicationController
   end
 
   def create
-    caregiver = Caregiver.create(caregiver_params)
+    @caregiver = Caregiver.create(caregiver_params)
+    if @caregiver.save
+      session[:user_id] = @caregiver.id
+      redirect_to caregiver_path(@caregiver)
+    else
+      render :new
+    end
   end
 
   def edit
