@@ -31,6 +31,12 @@ class CaregiversController < ApplicationController
   end
 
   def show
+    @caregiver = Caregiver.find(params[:id])
+    if current_user(Caregiver)
+      render :show
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy
