@@ -1,0 +1,20 @@
+<%= form_for @mom do |f| %>
+  Name <br>
+  <%= f.text_field :name %><br>
+  Email <br>
+  <%= f.text_field :email %><br>
+
+  Upload your picture(paste a link)<br>
+  <%= f.text_field :picture%><br>
+
+  Primary Contact number<br>
+  <%= f.text_field :phone_number%><br>
+
+  Who can pick up your child apart from you?<br>
+  <%= f.text_field :pick_up_authorization%><br>
+
+  Password
+  <%= f.password_field :password %><br>
+
+  <%= f.submit %>
+<% end %>

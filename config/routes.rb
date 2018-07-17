@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'caregivers#home'
 
   resources :dailylogs
-
   resources :caregivers
+  resources :moms
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
