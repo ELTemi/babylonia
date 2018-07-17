@@ -1,8 +1,6 @@
 class CaregiversController < ApplicationController
-  skip_before_action :require_login, only: [:home, :new, :create], raise: false
 
   def home
-
   end
 
   def new
@@ -12,7 +10,7 @@ class CaregiversController < ApplicationController
   def create
     @caregiver = Caregiver.create(caregiver_params)
     if @caregiver.save
-      session[:user_id] = @caregiver.id
+      current_user
       redirect_to caregiver_path(@caregiver)
     else
       render :new
@@ -20,12 +18,17 @@ class CaregiversController < ApplicationController
   end
 
   def edit
-    @caregiver = Caregiver.find(params[:id])
+    if current_user
+      @caregiver = Caregiver.find(params[:id])
+    else
+      redirect_to '/login'
+    end
   end
 
   def update
     @caregiver = Caregiver.find(params[:id])
-    if session[:user_id] == @caregiver.id
+    current_user
+    if current_user
       @caregiver.update(caregiver_params)
       redirect_to caregiver_path(@caregiver)
     else
@@ -34,20 +37,22 @@ class CaregiversController < ApplicationController
   end
 
   def index
-    @caregivers = Caregiver.all
+    if current_user
+      @caregivers = Caregiver.all
+    else
+      redirect_to '/login'
+    end
   end
 
   def show
     @caregiver = Caregiver.find(params[:id])
-    if session[:user_id] == @caregiver.id
+    if current_user
       render :show
     else
       redirect_to '/login'
     end
   end
 
-  def destroy
-  end
 
   def caregiver_params
     params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience)

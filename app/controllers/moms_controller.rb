@@ -1,12 +1,11 @@
 class MomsController < ApplicationController
-  skip_before_action :require_login, only: [:home, :new, :create], raise: false
 
   def new
     @mom = Mom.new
   end
 
   def create
-    
+    binding.pry
   end
 
   def edit

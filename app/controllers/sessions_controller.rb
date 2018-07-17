@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.create(user_params)
     if params[:user][:admin] == "1"
       @caregiver = Caregiver.find_by(email: params[:user][:email])
       if @caregiver.authenticate(params[:user][:password])
-        session[:user_id] = @caregiver.id
+        session[:user_id] = @user_id
         redirect_to caregiver_path(@caregiver)
       else
         render :login
@@ -16,7 +17,7 @@ class SessionsController < ApplicationController
     else
       @mom = Mom.find_by(email: params[:user][:email])
       if @mom.authenticate(params[:user][:password])
-        session[:user_id] = @mom.id
+        session[:user_id] = @user.id
         redirect_to mom_path(@mom)
       else
         render :login
@@ -27,6 +28,12 @@ class SessionsController < ApplicationController
   def logout
     session.delete :user_id
     redirect_to root_url
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password, :admin)
   end
 
 
