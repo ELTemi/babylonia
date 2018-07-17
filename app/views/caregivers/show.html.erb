@@ -1,9 +1,2 @@
-Welcome <%= @caregiver.name %><br>
-Age: <%= @caregiver.age %><br>
-Picture<%= @caregiver.picture%><br>
-Phone Number: <%= @caregiver.phone_number%><br>
-Years of Experience<%= @caregiver.experience%> Years <br>
-Rating: <%= @caregiver.rating%> Stars <br>
-Home Address<%= @caregiver.address%> <br>
-
+<%= render partial: "caregiver", locals: { caregiver: @caregiver } %>
 <%= link_to 'Logout', logout_path, method: :delete %>
