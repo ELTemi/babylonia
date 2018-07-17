@@ -1,0 +1,6 @@
+<%= form_for :user do |f| %>
+  Email: <%= f.text_field :email %> <br>
+  Password: <%= f.password_field :password %><br>
+  Check box if you are a caregiver <%= f.check_box :admin %><br>
+  <%= f.submit "Login" %>
+ <% end %>

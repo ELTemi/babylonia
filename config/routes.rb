@@ -6,9 +6,9 @@ Rails.application.routes.draw do
 
   resources :caregivers
 
-  get '/signin', to: 'sessions#new'
-  post '/signin', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#logout'
 
 
 end
