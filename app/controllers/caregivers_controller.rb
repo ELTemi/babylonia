@@ -1,4 +1,5 @@
 class CaregiversController < ApplicationController
+  skip_before_action :require_login, only: [:home, :new, :create], raise: false
 
   def home
 
@@ -23,7 +24,7 @@ class CaregiversController < ApplicationController
   end
 
   def update
-
+    @caregiver = Caregiver.find(params[:id])
   end
 
   def index
@@ -32,10 +33,10 @@ class CaregiversController < ApplicationController
 
   def show
     @caregiver = Caregiver.find(params[:id])
-    if current_user(Caregiver)
+    if session[:user_id] == @caregiver.id
       render :show
     else
-      redirect_to '/'
+      redirect_to '/login'
     end
   end
 
