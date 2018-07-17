@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = User.create(user_params)
     if params[:user][:admin] == "1"
       @caregiver = Caregiver.find_by(email: params[:user][:email])
-      if @caregiver.authenticate(params[:user][:password])
+      if !@caregiver.blank? && @caregiver.authenticate(params[:user][:password])
         session[:user_id] = @user_id
         redirect_to caregiver_path(@caregiver)
       else

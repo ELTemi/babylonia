@@ -16,13 +16,20 @@ class MomsController < ApplicationController
   end
 
   def edit
+    if current_user
+      @mom = Mom.find(params[:id])
+    end
   end
 
   def update
-
-  end
-
-  def index
+    @mom = Mom.find(params[:id])
+    current_user
+    if current_user
+      @mom.update(mom_params)
+      redirect_to mom_path(@mom)
+    else
+      render :login
+    end
   end
 
   def show
