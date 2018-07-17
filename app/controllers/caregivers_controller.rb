@@ -19,7 +19,7 @@ class CaregiversController < ApplicationController
   end
 
   def edit
-
+    @caregiver = Caregiver.find(params[:id])
   end
 
   def update
