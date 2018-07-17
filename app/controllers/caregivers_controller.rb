@@ -25,6 +25,12 @@ class CaregiversController < ApplicationController
 
   def update
     @caregiver = Caregiver.find(params[:id])
+    if session[:user_id] == @caregiver.id
+      @caregiver.update(caregiver_params)
+      redirect_to caregiver_path(@caregiver)
+    else
+      render :login
+    end
   end
 
   def index
