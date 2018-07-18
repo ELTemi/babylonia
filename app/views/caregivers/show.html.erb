@@ -1,3 +1,6 @@
+
+<h1>Welcome <%= @caregiver.name %><br></h1>
+
 <%= render partial: "caregiver", locals: { caregiver: @caregiver } %>
 <%= link_to 'Logout', logout_path, method: :delete %><br>
 <%= link_to 'Edit', edit_caregiver_path %>

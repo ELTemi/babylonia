@@ -2,12 +2,12 @@ class CreateDailylogs < ActiveRecord::Migration[5.2]
   def change
     create_table :dailylogs do |t|
       t.datetime  :time_in
-      t.string  :nap
-      t.string  :meal
-      t.string  :diaper
-      t.string  :play
+      t.integer  :nap
+      t.integer  :meal
+      t.integer  :diaper
+      t.integer  :play_time
       t.text  :summary
-      t.string  :meds
+      t.boolean  :meds, :default => false
       t.datetime  :time_out
       t.integer :baby_id
       t.integer :caregiver_id

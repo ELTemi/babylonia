@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2018_07_17_160234) do
     t.string "picture"
     t.text "allergies"
     t.string "emergency_contact"
-    t.integer "caregiver_id"
     t.integer "mom_id"
+    t.integer "caregiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,12 +42,12 @@ ActiveRecord::Schema.define(version: 2018_07_17_160234) do
 
   create_table "dailylogs", force: :cascade do |t|
     t.datetime "time_in"
-    t.string "nap"
-    t.string "meal"
-    t.string "diaper"
-    t.string "play"
+    t.integer "nap"
+    t.integer "meal"
+    t.integer "diaper"
+    t.integer "play_time"
     t.text "summary"
-    t.string "meds"
+    t.boolean "meds", default: false
     t.datetime "time_out"
     t.integer "baby_id"
     t.integer "caregiver_id"

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :dailylogs
   resources :caregivers
   resources :moms
+  resources :babies
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

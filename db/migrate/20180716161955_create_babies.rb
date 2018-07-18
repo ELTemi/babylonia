@@ -7,8 +7,8 @@ class CreateBabies < ActiveRecord::Migration[5.2]
       t.string  :picture
       t.text    :allergies
       t.string  :emergency_contact
-      t.integer :caregiver_id
       t.integer :mom_id
+      t.integer :caregiver_id
 
       t.timestamps
     end
