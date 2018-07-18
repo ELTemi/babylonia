@@ -1,4 +1,14 @@
 <%= render partial: "mom", locals: { mom: @mom } %>
+
+<h3>Babies on profile</h3>
+<ul>
+  <% @mom.babies.each do |baby| %>
+    <%= link_to "#{baby.name}", baby_path(baby) %>
+    <h5><%= link_to "Edit baby", edit_baby_path(baby) %></h5>
+    <%= render partial: "/babies/baby", locals: { baby: baby } %>
+  <% end %>
+</ul>
+
 <%= link_to 'Logout', logout_path, method: :delete %><br>
 <%= link_to 'Edit', edit_mom_path %><br>
 <%= link_to 'Add a baby', new_baby_path(@baby) %>

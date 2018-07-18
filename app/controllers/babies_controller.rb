@@ -1,10 +1,16 @@
 class BabiesController < ApplicationController
   def new
     @baby = Baby.new
+    @mom = set_mom
   end
 
   def create
-
+    @baby = Baby.create(baby_params)
+    if @baby.save && current_user
+      redirect_to baby_path(@baby)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -20,19 +26,22 @@ class BabiesController < ApplicationController
   end
 
   def show
-
+    @baby = Baby.find(params[:id])
+    @mom = @baby.mom
   end
 
 
   def baby_params
-    params.require(:baby).permit(:name, :sex, :dob, :picture, :allergies, :emergency_contact, :mom_id)
+    params.require(:baby).permit(:name, :sex, :dob, :picture, :allergies, :emergency_contact, :caregiver_id, :mom_id)
+  end
+
+  private
+
+  def set_user
+    current_user
+  end
+
+  def set_mom
+    Mom.find_by(email: current_user.email)
   end
 end
-
-t.string  :name
-t.string  :sex
-t.date    :dob
-t.string  :picture
-t.text    :allergies
-t.string  :emergency_contact
-t.integer :mom_id

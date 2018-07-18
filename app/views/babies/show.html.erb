@@ -1,0 +1,5 @@
+<%= render partial: "baby", locals: { baby: @baby } %>
+
+<h3><%= @baby.name + "'s Mom" %></h3>
+<%= link_to "Mom's profile page", mom_path(@mom)%><br>
+<%= render partial: "moms/mom", locals: { mom: @mom } %>

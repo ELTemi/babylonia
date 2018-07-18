@@ -1,0 +1,26 @@
+<%= form_for @baby do |f| %>
+  Name <br>
+  <%= f.text_field :name %><br>
+
+  Upload your picture(paste a link)<br>
+  <%= f.text_field :picture%><br>
+
+  Emergency Contact number<br>
+  <%= f.text_field :emergency_contact%><br>
+
+  date of Birth<br>
+  <%= f.date_field :dob %><br>
+
+  Sex<br>
+  <%= f.text_field :sex %><br>
+
+  Allergies<br>
+  <%= f.text_field :allergies %><br>
+
+  <%= f.hidden_field :mom_id, :value => @mom.id %><br>
+
+  Select a Caregiver
+  <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
+
+  <%= f.submit %>
+<% end %>

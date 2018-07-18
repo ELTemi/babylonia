@@ -10,7 +10,7 @@ class CaregiversController < ApplicationController
   def create
     @caregiver = Caregiver.create(caregiver_params)
     if @caregiver.save
-      @user = User.create(email: @caregiver.email, password: @caregiver.password)
+      @user = User.create(email: @caregiver.email, password: @caregiver.password, admin: true)
       session[:user_id] = @user.id
       redirect_to caregiver_path(@caregiver)
     else

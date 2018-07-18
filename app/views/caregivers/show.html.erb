@@ -3,4 +3,5 @@
 
 <%= render partial: "caregiver", locals: { caregiver: @caregiver } %>
 <%= link_to 'Logout', logout_path, method: :delete %><br>
-<%= link_to 'Edit', edit_caregiver_path %>
+<%= link_to 'Edit', edit_caregiver_path %><br>
+<%= link_to "Add a Baby", new_baby_path(@baby) %>
