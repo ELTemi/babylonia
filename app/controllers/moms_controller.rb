@@ -45,6 +45,6 @@ class MomsController < ApplicationController
   end
 
   def mom_params
-    params.require(:mom).permit(:name, :email, :picture, :phone_number, :pick_up_authorization, :password, :experience)
+    params.require(:mom).permit(:name, :email, :picture, :phone_number, :pick_up_authorization, :password, :experience, :caregiver_ids => [])
   end
 end
