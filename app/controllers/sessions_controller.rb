@@ -5,23 +5,26 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
     if params[:user][:admin] == "1"
+      @user = User.find_by(email: params[:user][:email])
+      @user.update(user_params)
       @caregiver = Caregiver.find_by(email: params[:user][:email])
       if !@caregiver.blank? && @caregiver.authenticate(params[:user][:password])
-        session[:user_id] = @user_id
+        session[:user_id] = @user.id
         redirect_to caregiver_path(@caregiver)
       else
         render :login
       end
-    else
+    elsif params[:user][:admin] == "0"
       @mom = Mom.find_by(email: params[:user][:email])
-      if @mom.authenticate(params[:user][:password])
+      if !@mom.blank? && @mom.authenticate(params[:user][:password])
         session[:user_id] = @user.id
         redirect_to mom_path(@mom)
       else
         render :login
       end
+    else
+      render :login
     end
   end
 
