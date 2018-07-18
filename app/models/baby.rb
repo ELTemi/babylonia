@@ -1,5 +1,5 @@
 class Baby < ApplicationRecord
   belongs_to :mom
+  belongs_to :caregiver
   has_many :dailylogs
-  has_many :caregivers, through: :dailylogs
 end
