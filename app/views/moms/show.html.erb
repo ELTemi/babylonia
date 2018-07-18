@@ -5,6 +5,7 @@
   <% @mom.babies.each do |baby| %>
     <%= link_to "#{baby.name}", baby_path(baby) %>
     <h5><%= link_to "Edit baby", edit_baby_path(baby) %></h5>
+    <h5><%= link_to "Delete baby", baby_path(baby), :data => {:method => "delete"} %></h5>
     <%= render partial: "/babies/baby", locals: { baby: baby } %>
   <% end %>
 </ul>

@@ -6,19 +6,30 @@ class BabiesController < ApplicationController
 
   def create
     @baby = Baby.create(baby_params)
-    if @baby.save && current_user
-      redirect_to baby_path(@baby)
+    binding.pry
+    if @baby.save && set_mom
+      redirect_to mom_path(@baby.mom)
     else
       render :new
     end
   end
 
   def edit
-
+    if current_user
+      @baby = Baby.find(params[:id])
+      @mom = set_mom
+    end
   end
 
   def update
-
+    @baby= Baby.find(params[:id])
+    current_user
+    if set_mom
+      @baby.update(baby_params)
+      redirect_to mom_path(@baby.mom)
+    else
+      render :login
+    end
   end
 
   def index
@@ -28,6 +39,14 @@ class BabiesController < ApplicationController
   def show
     @baby = Baby.find(params[:id])
     @mom = @baby.mom
+  end
+
+  def destroy
+    if set_mom
+      @baby = Baby.find(params[:id])
+      @baby.destroy
+      redirect_to mom_path(@baby.mom)
+    end
   end
 
 
