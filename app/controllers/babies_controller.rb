@@ -1,27 +1,28 @@
 class BabiesController < ApplicationController
 
-  def create
-    @baby = Baby.create(baby_params)
-    mom = Mom.new
-    redirect_to mom_path(@baby.mom)
+  def new
+    @baby = Baby.new
+    @mom = Mom.find(params[:mom_id])
   end
 
-  #def edit
-  #  if set_mom
-  #    @baby = Baby.find(params[:id])
-  #    @mom = set_mom
-  #  end
-  #end
+  def create
+    @baby = Baby.create(baby_params)
+    if @baby.save
+      redirect_to mom_path(@baby.mom)
+    else
+      render :new
+    end
+  end
 
-  #def update
-  #  @baby= Baby.find(params[:id])
-  #  if set_mom
-  #    @baby.update(baby_params)
-  #    redirect_to mom_path(@baby.mom)
-  #  else
-  #    render :login
-  #  end
-  #end
+  def edit
+    @baby = Baby.find(params[:id])
+  end
+
+  def update
+    @baby= Baby.find(params[:id])
+    @baby.update(baby_params)
+    redirect_to mom_path(@baby.mom)
+  end
 
   #def index
   #  @babies = Baby.all

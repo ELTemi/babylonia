@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :dailylogs
   resources :caregivers
-  resources :moms
+  resources :moms do
+    resources :babies
+  end
   resources :babies
 
   get '/login', to: 'sessions#login'

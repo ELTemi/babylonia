@@ -2,6 +2,10 @@
   Name <br>
   <%= f.text_field :name %><br>
 
+  <% if params[:mom_id] %>
+    <%= f.hidden_field :mom_id, :value => params[:mom_id] %><br>
+  <% end %>
+
   Upload your picture(paste a link)<br>
   <%= f.text_field :picture%><br>
 
@@ -16,8 +20,6 @@
 
   Allergies<br>
   <%= f.text_field :allergies %><br>
-
-  <%= f.hidden_field :mom_id, :value => @mom.id %><br>
 
   Select a Caregiver
   <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
