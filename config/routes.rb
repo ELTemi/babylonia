@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :moms do
     resources :babies
   end
+
   resources :babies
 
   get '/login', to: 'sessions#login'

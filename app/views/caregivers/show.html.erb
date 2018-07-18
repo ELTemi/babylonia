@@ -2,6 +2,16 @@
 <h1>Welcome <%= @caregiver.name %><br></h1>
 
 <%= render partial: "caregiver", locals: { caregiver: @caregiver } %>
+
+<% @caregiver.babies.each_with_index do |baby, index| %>
+  <%= "#{index + 1}." %>
+  <ul>
+    <%= render partial: "babies/baby", locals: { baby: baby } %><br>
+    <strong><%= baby.name + "'s Mom" %><br></strong>
+    <%= render partial: "moms/mom", locals: { mom: baby.mom } %>
+  </ul>
+
+<% end %>
+
 <%= link_to 'Logout', logout_path, method: :delete %><br>
 <%= link_to 'Edit', edit_caregiver_path %><br>
-<%= link_to "Add a Baby", new_baby_path(@baby) %>

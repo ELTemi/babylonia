@@ -56,6 +56,6 @@ class CaregiversController < ApplicationController
 
 
   def caregiver_params
-    params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience)
+    params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
   end
 end

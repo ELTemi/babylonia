@@ -24,9 +24,9 @@ class BabiesController < ApplicationController
     redirect_to mom_path(@baby.mom)
   end
 
-  #def index
-  #  @babies = Baby.all
-  #end
+  def index
+    @babies = Baby.all
+  end
 
   #def show
   #  @baby = Baby.find(params[:id])
