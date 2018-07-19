@@ -1,4 +1,6 @@
 class CaregiversController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:home, :index]
 
   def home
   end
@@ -38,24 +40,21 @@ class CaregiversController < ApplicationController
   end
 
   def index
-    if current_user
-      @caregivers = Caregiver.all
-    else
-      redirect_to '/login'
-    end
+    @caregivers = Caregiver.all
   end
 
   def show
     @caregiver = Caregiver.find(params[:id])
-    if current_user
-      render :show
-    else
-      redirect_to '/login'
-    end
   end
 
 
   def caregiver_params
     params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
+  end
+
+  private
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 end
