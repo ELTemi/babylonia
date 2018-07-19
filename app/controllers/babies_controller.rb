@@ -2,10 +2,10 @@ class BabiesController < ApplicationController
 
   def new
     @baby = Baby.new
-    @mom = Mom.find(params[:mom_id])
   end
 
   def create
+    binding.pry
     @baby = Baby.create(baby_params)
     if @baby.save
       redirect_to baby_path(@baby)

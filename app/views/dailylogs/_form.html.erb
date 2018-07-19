@@ -24,5 +24,11 @@
   Time Out <br>
   <%= f.datetime_local_field :time_in %><br>
 
+  Select a baby for this Log
+  <%= f.collection_select :baby_id, Baby.all, :id, :name %><br>
+
+  Select a Caregiver for this Log
+  <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
+
   <%= f.submit %>
 <% end %>

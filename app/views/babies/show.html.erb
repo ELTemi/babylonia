@@ -2,4 +2,4 @@
 
 
 <h3><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
-<h4><%= link_to "All Logs", dailylogs_path %></h4>
+<h4><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>

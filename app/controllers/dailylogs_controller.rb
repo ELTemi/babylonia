@@ -1,6 +1,4 @@
 class DailylogsController < ApplicationController
-  before_action :require_login
-  skip_before_action :require_login, only: [:index]
 
   def new
    @dailylog = Dailylog.new
@@ -9,27 +7,19 @@ class DailylogsController < ApplicationController
   def create
     @dailylog = Dailylog.create(dailylog_params)
     if @dailylog.save
-      @dailylog
+      @baby = @dailylog.baby
+      redirect_to baby_dailylogs_path(@baby)
+    else
+      render :new
     end
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
   def index
-    @baby.dailylogs = Dailylog.all
+    @dailylogs = Dailylog.all
   end
 
   def show
     @dailylog = Dailylog.find(params[:id])
-  end
-
-  def destroy
   end
 
   private

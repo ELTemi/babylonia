@@ -6,7 +6,7 @@
 <% @caregiver.babies.each_with_index do |baby, index| %>
   <%= "#{index + 1}." %>
   <ul>
-    <%= link_to " Add Daily Log for #{baby.name}", new_baby_dailylog_path(baby, @dailylog) %>
+    <%= link_to " Add Daily Log for #{baby.name}", new_dailylog_path(@dailylog) %>
 
     <%= render partial: "babies/baby", locals: { baby: baby } %><br>
 

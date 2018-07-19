@@ -8,7 +8,6 @@ class MomsController < ApplicationController
 
   def show
     @mom = Mom.find(params[:id])
-    @baby = Baby.new
     if current_user
       render :show
     else

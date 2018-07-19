@@ -3,20 +3,17 @@
 <h3>Babies on profile</h3>
 <ul>
   <% @mom.babies.each do |baby| %>
-
-    <%= link_to "#{baby.name}", mom_baby_path(baby) %>
-    <h5><%= link_to "Edit baby", edit_mom_baby_path(baby) %></h5>
-    <h5><%= link_to "Delete baby", baby_path(baby), :data => { :method => "delete" } %></h5>
+    <li>
+    <%= link_to "#{baby.name}", baby_path(baby) %>
     <%= render partial: "/babies/baby", locals: { baby: baby } %>
-
     <h3>Caregiver</h3>
     Caregiver's name: <%= baby.caregiver.name %><br>
     <%= render partial: "caregivers/caregiver", locals: { caregiver: baby.caregiver } %>
-
+    </li>
+    <br></br>
   <% end %>
 </ul>
 
-<h5><%= link_to "Add a Baby", new_mom_baby_path(@mom, @baby) %></h5>
 
 
 
@@ -45,7 +42,6 @@
     <%= f.submit "Add baby" %>
     <% end %>
 </div> -->
-
-
+<%= link_to 'Add a Baby', new_baby_path(@baby) %><br>
+<%= link_to 'Edit', edit_mom_path(@mom) %><br>
 <%= link_to 'Logout', logout_path, method: :delete %><br>
-<%= link_to 'Edit', edit_mom_path %><br>

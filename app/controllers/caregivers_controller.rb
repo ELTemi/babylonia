@@ -2,8 +2,6 @@ class CaregiversController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create, :index]
 
-
-
   def new
     @caregiver = Caregiver.new
   end
