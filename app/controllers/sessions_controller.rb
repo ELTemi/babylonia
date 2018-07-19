@@ -1,7 +1,13 @@
 class SessionsController < ApplicationController
 
+
   def login
     @user = User.new
+    if session[:user_id].blank? == false
+      redirect_to root_url
+    else
+      redirect_to '/login'
+    end
   end
 
   def create
@@ -39,5 +45,8 @@ class SessionsController < ApplicationController
     params.require(:user).permit(:email, :password, :admin)
   end
 
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
+  end
 
 end

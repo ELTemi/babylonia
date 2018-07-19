@@ -21,22 +21,13 @@ class CaregiversController < ApplicationController
   end
 
   def edit
-    if current_user
-      @caregiver = Caregiver.find(params[:id])
-    else
-      redirect_to '/login'
-    end
+    @caregiver = Caregiver.find(params[:id])
   end
 
   def update
     @caregiver = Caregiver.find(params[:id])
-    current_user
-    if current_user
-      @caregiver.update(caregiver_params)
-      redirect_to caregiver_path(@caregiver)
-    else
-      render :login
-    end
+    @caregiver.update(caregiver_params)
+    redirect_to caregiver_path(@caregiver)
   end
 
   def index
