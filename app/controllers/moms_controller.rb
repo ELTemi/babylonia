@@ -1,6 +1,6 @@
 class MomsController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:index]
+  skip_before_action :require_login, only: [:index, :new, :create]
 
   def index
     @moms= Mom.all
@@ -60,6 +60,6 @@ class MomsController < ApplicationController
   end
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+      redirect_to root_url unless session.include? :user_id
   end
 end

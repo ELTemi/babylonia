@@ -7,31 +7,22 @@ class SessionsController < ApplicationController
   def login
     @user = User.new
     if session[:user_id].blank? == false
-      redirect_to root_url
+      redirect_to dailylogs_path
     else
       render :login
     end
   end
 
   def create
-    if params[:user][:admin] == "1"
-      @user = User.find_by(email: params[:user][:email])
-      @caregiver = Caregiver.find_by(email: params[:user][:email])
-      if !@caregiver.blank? && @caregiver.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to caregiver_path(@caregiver)
-      else
-        render :login
-      end
-    elsif params[:user][:admin] == "0"
-      @user = User.find_by(email: params[:user][:email])
-      @mom = Mom.find_by(email: params[:user][:email])
-      if !@mom.blank? && @mom.authenticate(params[:user][:password])
-        session[:user_id] = @user.id
-        redirect_to mom_path(@mom)
-      else
-        render :login
-      end
+    @caregiver = Caregiver.find_by(email: params[:user][:email])
+    @mom = Mom.find_by(email: params[:user][:email])
+    @user = User.find_by(email: params[:user][:email])
+    if !@caregiver.blank? && @caregiver.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to caregiver_path(@caregiver)
+    elsif !@mom.blank? && @mom.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to mom_path(@mom)
     else
       render :login
     end

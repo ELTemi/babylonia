@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :dailylogs
   resources :caregivers
+
   resources :moms do
     resources :babies
   end

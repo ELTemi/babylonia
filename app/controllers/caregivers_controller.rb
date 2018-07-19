@@ -46,6 +46,6 @@ class CaregiversController < ApplicationController
   private
 
   def require_login
-    return head(:forbidden) unless session.include? :user_id
+      redirect_to login_path unless session.include? :user_id
   end
 end
