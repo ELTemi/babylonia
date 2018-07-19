@@ -1,0 +1,28 @@
+<%= form_for @dailylog do |f| %>
+
+  Time In <br>
+  <%= f.datetime_local_field :time_in %><br>
+
+  Number of Naps today<br>
+  <%= f.text_field :nap%><br>
+
+  Number of Times Baby Ate today<br>
+  <%= f.text_field :meal%><br>
+
+  How many diaper changes<br>
+  <%= f.text_field :diaper%><br>
+
+  How many hours did the baby play for?<br>
+  <%= f.text_field :play_time %><br>
+
+  Did the baby have any meds today? check yes if true<br>
+  <%= f.check_box :meds %><br>
+
+  Any comments baby's general behaviour day? <br>
+  <%= f.text_field :summary %><br>
+
+  Time Out <br>
+  <%= f.datetime_local_field :time_in %><br>
+
+  <%= f.submit %>
+<% end %>

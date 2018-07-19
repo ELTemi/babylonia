@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :babies
   end
 
-  resources :babies
+  resources :babies do
+    resources :dailylogs
+  end
 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'

@@ -1,6 +1,6 @@
 class MomsController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:home, :index]
+  skip_before_action :require_login, only: [:index]
 
   def index
     @moms= Mom.all

@@ -1,6 +1,6 @@
 class CaregiversController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:new, :create, :home, :index]
+  skip_before_action :require_login, only: [:new, :create, :index]
 
 
 
@@ -10,7 +10,6 @@ class CaregiversController < ApplicationController
 
   def create
     @caregiver = Caregiver.create(caregiver_params)
-    binding.pry
     if @caregiver.save
       @user = User.create(email: @caregiver.email, password: @caregiver.password, admin: true)
       session[:user_id] = @user.id
@@ -36,6 +35,7 @@ class CaregiversController < ApplicationController
 
   def show
     @caregiver = Caregiver.find(params[:id])
+    @dailylog = Dailylog.new
   end
 
 
