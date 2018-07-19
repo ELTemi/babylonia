@@ -1,12 +1,15 @@
 class SessionsController < ApplicationController
 
+  def home
+  end
+
 
   def login
     @user = User.new
     if session[:user_id].blank? == false
       redirect_to root_url
     else
-      redirect_to '/login'
+      render :login
     end
   end
 

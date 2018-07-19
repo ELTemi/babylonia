@@ -1,4 +1,20 @@
 class MomsController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:home, :index]
+
+  def index
+    @moms= Mom.all
+  end
+
+  def show
+    @mom = Mom.find(params[:id])
+    @baby = Baby.new
+    if current_user
+      render :show
+    else
+      redirect_to '/login'
+    end
+  end
 
   def new
     @mom = Mom.new
@@ -32,20 +48,18 @@ class MomsController < ApplicationController
     end
   end
 
-  def show
-    @mom = Mom.find(params[:id])
-    @baby = Baby.new
-    if current_user
-      render :show
-    else
-      redirect_to '/login'
-    end
-  end
 
   def destroy
   end
 
+
+  private
+
   def mom_params
     params.require(:mom).permit(:name, :email, :picture, :phone_number, :pick_up_authorization, :password, :experience, :caregiver_ids => [])
+  end
+
+  def require_login
+    return head(:forbidden) unless session.include? :user_id
   end
 end

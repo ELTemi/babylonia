@@ -1,7 +1,7 @@
 class DailylogsController < ApplicationController
 
   def new
-    
+`   `
   end
 
   def create
