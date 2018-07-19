@@ -1,0 +1,6 @@
+<h1>All Babies</h1>
+
+
+<% @babies.each do |baby| %>
+  <%= link_to baby.name, baby_path(baby) %> - <%= link_to baby.mom.name, mom_path(baby.mom)%> - <%= link_to baby.caregiver.name, caregiver_path(baby.caregiver)%> - <%= link_to "All Logs", dailylogs_path %><br><br>
+<% end %>

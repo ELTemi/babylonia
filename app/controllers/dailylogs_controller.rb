@@ -3,15 +3,13 @@ class DailylogsController < ApplicationController
   skip_before_action :require_login, only: [:index]
 
   def new
-   @baby = Baby.find(params[:baby_id])
    @dailylog = Dailylog.new
   end
 
   def create
-    @baby = Baby.find(params[:baby_id])
     @dailylog = Dailylog.create(dailylog_params)
     if @dailylog.save
-      @dailylog.baby = @baby.id
+      @dailylog
     end
   end
 
@@ -24,7 +22,7 @@ class DailylogsController < ApplicationController
   end
 
   def index
-    @dailylogs = Dailylog.all
+    @baby.dailylogs = Dailylog.all
   end
 
   def show

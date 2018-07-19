@@ -8,7 +8,7 @@ class BabiesController < ApplicationController
   def create
     @baby = Baby.create(baby_params)
     if @baby.save
-      redirect_to mom_path(@baby.mom)
+      redirect_to baby_path(@baby)
     else
       render :new
     end
@@ -28,10 +28,9 @@ class BabiesController < ApplicationController
     @babies = Baby.all
   end
 
-  #def show
-  #  @baby = Baby.find(params[:id])
-  #  @mom = @baby.mom
-  #end
+  def show
+    @baby = Baby.find(params[:id])
+  end
 
   def destroy
     if set_mom
