@@ -6,9 +6,9 @@ class Caregiver < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, uniqueness: true
+  validates :phone_number, uniqueness: true, length: { is: 10 }
   has_secure_password
   has_attached_file :avatar
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
-  
+
 end
