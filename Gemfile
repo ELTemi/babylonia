@@ -28,6 +28,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 
 gem 'paperclip'
+
+gem "omniauth"
+
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

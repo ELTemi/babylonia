@@ -24,6 +24,9 @@ class SessionsController < ApplicationController
     end
   end
 
+
+
+
   def logout
     session.delete :user_id
     redirect_to root_url
