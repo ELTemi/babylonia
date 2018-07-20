@@ -1,13 +1,7 @@
-
+<h1>All Logs</h1>
   <% @dailylogs.each do |dailylog| %>
     <% if dailylog.baby %>
       <%= link_to dailylog.baby.name, baby_path(dailylog.baby) %><br>
-      <%= dailylog.time_in %><br>
-      Napped <%= dailylog.nap %> times<br>
-      Ate <%= dailylog.meal %> times <br>
-      Played for <%= dailylog.play_time %> hours<br>
-      Changed diapers <%= dailylog.diaper %> times <br>
-      <%= dailylog.summary %><br>
-      <%= dailylog.time_out %><br>
+      <%= render partial: "dailylog", locals: { dailylog: dailylog } %>
     <% end %>
   <% end %><br>
