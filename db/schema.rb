@@ -33,9 +33,7 @@ ActiveRecord::Schema.define(version: 2018_07_17_160234) do
     t.integer "experience"
     t.string "picture"
     t.string "phone_number"
-    t.integer "rating"
     t.text "address"
-    t.boolean "availability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,9 +8,7 @@ class CreateCaregivers < ActiveRecord::Migration[5.2]
       t.integer :experience
       t.string :picture
       t.string :phone_number
-      t.integer :rating
       t.text :address
-      t.boolean :availability
 
       t.timestamps
     end

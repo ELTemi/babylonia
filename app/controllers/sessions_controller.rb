@@ -6,11 +6,7 @@ class SessionsController < ApplicationController
 
   def login
     @user = User.new
-    if session[:user_id].blank? == false
-      redirect_to dailylogs_path
-    else
-      render :login
-    end
+    render :login
   end
 
   def create
