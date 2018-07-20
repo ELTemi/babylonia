@@ -6,10 +6,6 @@ class MomsController < ApplicationController
     @moms= Mom.all
   end
 
-  def show
-    @mom = Mom.find(params[:id])
-  end
-
   def new
     @mom = Mom.new
   end
@@ -40,6 +36,10 @@ class MomsController < ApplicationController
     else
       render :login
     end
+  end
+
+  def show
+    @mom = Mom.find(params[:id])
   end
 
 

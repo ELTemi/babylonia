@@ -12,6 +12,7 @@ class BabiesController < ApplicationController
   def create
     @baby = Baby.create(baby_params)
     @baby.mom = Mom.find_by(email: current_user.email)
+    binding.pry
     if @baby.save
       redirect_to baby_path(@baby)
     else
