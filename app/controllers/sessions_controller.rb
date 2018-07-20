@@ -39,8 +39,5 @@ class SessionsController < ApplicationController
     params.require(:user).permit(:email, :password, :admin)
   end
 
-  def require_login
-    return head(:forbidden) unless session.include? :user_id
-  end
 
 end

@@ -33,25 +33,13 @@ class BabiesController < ApplicationController
   end
 
   def destroy
-    if set_mom
       @baby = Baby.find(params[:id])
       @baby.destroy
       redirect_to mom_path(@baby.mom)
-    end
-  end
-
-
-  def baby_params
-    params.require(:baby).permit(:name, :sex, :dob, :picture, :allergies, :emergency_contact, :caregiver_id, :mom_id)
   end
 
   private
-
-  def set_user
-    current_user
+  
+  def baby_params
+    params.require(:baby).permit(:name, :sex, :dob, :picture, :allergies, :emergency_contact, :caregiver_id, :mom_id)
   end
-
-  def set_mom
-    Mom.find_by(email: current_user.email)
-  end
-end

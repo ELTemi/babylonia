@@ -37,13 +37,11 @@ class CaregiversController < ApplicationController
   end
 
 
-  def caregiver_params
-    params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
-  end
-
   private
 
-  def require_login
-      redirect_to login_path unless session.include? :user_id
-  end
+  def caregiver_params
+    params.require(:caregiver).permit(:name, :email, :picture, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
+  end    
+
+
 end

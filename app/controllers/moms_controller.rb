@@ -57,8 +57,5 @@ class MomsController < ApplicationController
   def mom_params
     params.require(:mom).permit(:name, :email, :picture, :phone_number, :pick_up_authorization, :password, :experience, :caregiver_ids => [])
   end
-
-  def require_login
-      redirect_to root_url unless session.include? :user_id
-  end
+  
 end
