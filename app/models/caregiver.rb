@@ -9,4 +9,5 @@ class Caregiver < ApplicationRecord
   validates :email, presence: true
   validates :phone_number, uniqueness: true
   has_secure_password
+  has_attached_file :avatar
 end

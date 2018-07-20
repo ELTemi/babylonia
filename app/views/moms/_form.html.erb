@@ -1,11 +1,11 @@
-<%= form_for @mom do |f| %>
+<%= form_for @mom, html: {multipart: true} do |f| %>
   Name <br>
   <%= f.text_field :name %><br>
   Email <br>
   <%= f.text_field :email %><br>
 
   Upload your picture(paste a link)<br>
-  <%= f.text_field :picture%><br>
+  <%= f.file_field :avatar%><br>
 
   Primary Contact number<br>
   <%= f.text_field :phone_number%><br>

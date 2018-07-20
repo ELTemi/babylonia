@@ -1,11 +1,11 @@
-<%= form_for @caregiver do |f| %>
+<%= form_for @caregiver, html: {multipart: true} do |f| %>
   Name <br>
   <%= f.text_field :name %><br>
   Email <br>
   <%= f.text_field :email %><br>
 
   Upload your picture(paste a link)<br>
-  <%= f.text_field :picture%><br>
+  <%= f.file_field :avatar%><br>
 
   Primary Contact number<br>
   <%= f.text_field :phone_number%><br>
@@ -13,17 +13,11 @@
   How many years of childcare experience do you have <br>
   <%= f.text_field :experience %><br>
 
-  Childcare Rating <br>
-  <%= f.text_field :rating %><br>
-
   Age(in years)<br>
   <%= f.text_field :age %><br>
 
   Home Address<br>
   <%= f.text_field :address %><br>
-
-  Are you available from Monday to Friday?<br>
-  <%= f.text_field :availability%><br>
 
   Password
   <%= f.password_field :password %><br>

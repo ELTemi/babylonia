@@ -1,4 +1,4 @@
-<%= form_for @baby do |f| %>
+<%= form_for @baby, html: {multipart: true} do |f| %>
   Name <br>
   <%= f.text_field :name %><br>
 
@@ -7,7 +7,7 @@
   <% end %>
 
   Upload your picture(paste a link)<br>
-  <%= f.text_field :picture%><br>
+  <%= f.file_field :avatar%><br>
 
   Emergency Contact number<br>
   <%= f.text_field :emergency_contact%><br>

@@ -6,6 +6,6 @@ class Mom < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   has_secure_password
-
+  has_attached_file :avatar
 
 end
