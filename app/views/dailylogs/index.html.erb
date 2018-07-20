@@ -1,4 +1,13 @@
 
   <% @dailylogs.each do |dailylog| %>
-    <%= dailylog.nap %><br>
+    <% if dailylog.baby %>
+      <%= link_to dailylog.baby.name, baby_path(dailylog.baby) %><br>
+      <%= dailylog.time_in %><br>
+      Napped <%= dailylog.nap %> times<br>
+      Ate <%= dailylog.meal %> times <br>
+      Played for <%= dailylog.play_time %> hours<br>
+      Changed diapers <%= dailylog.diaper %> times <br>
+      <%= dailylog.summary %><br>
+      <%= dailylog.time_out %><br>
+    <% end %>
   <% end %><br>
