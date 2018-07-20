@@ -1,3 +1,18 @@
+<% if @caregiver.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@caregiver.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+
+    <ul>
+    <% @caregiver.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @caregiver, html: {multipart: true} do |f| %>
   Name <br>
   <%= f.text_field :name %><br>

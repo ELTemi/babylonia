@@ -11,8 +11,6 @@ class BabiesController < ApplicationController
 
   def create
     @baby = Baby.create(baby_params)
-    @baby.mom = Mom.find_by(email: current_user.email)
-    binding.pry
     if @baby.save
       redirect_to baby_path(@baby)
     else
@@ -41,6 +39,7 @@ class BabiesController < ApplicationController
   def destroy
     @baby = Baby.find_by(params[:id])
     @baby.destroy
+    flash[:notite] = "Baby Profile deleted"
     redirect_to babies_path
   end
 
