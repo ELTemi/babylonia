@@ -2,10 +2,16 @@ class BabiesController < ApplicationController
 
   def new
     @baby = Baby.new
+    if current_user.admin == true
+      redirect_to root_url
+    else
+      render :new
+    end
   end
 
   def create
     @baby = Baby.create(baby_params)
+    @baby.mom = Mom.find_by(email: current_user.email)
     if @baby.save
       redirect_to baby_path(@baby)
     else
@@ -32,14 +38,17 @@ class BabiesController < ApplicationController
   end
 
   def destroy
-    @baby = Baby.find(params[:id])
+    @baby = Baby.find_by(params[:id])
     @baby.destroy
-    redirect_to mom_path(@baby.mom)
+    redirect_to babies_path
   end
+
 
   private
 
   def baby_params
     params.require(:baby).permit(:name, :sex, :dob, :picture, :allergies, :emergency_contact, :caregiver_id, :mom_id)
   end
+
+
 end

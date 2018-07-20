@@ -8,11 +8,6 @@ class MomsController < ApplicationController
 
   def show
     @mom = Mom.find(params[:id])
-    if current_user
-      render :show
-    else
-      redirect_to '/login'
-    end
   end
 
   def new

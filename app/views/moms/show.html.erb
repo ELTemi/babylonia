@@ -2,6 +2,9 @@
 
 <h3>Babies on profile</h3>
 
+<% @mom.babies.each do |baby| %>
+  <%= link_to baby.name, baby_path(baby) %> - <%= link_to "See all Logs for #{baby.name} ", baby_dailylogs_path(baby) %><br>
+<% end %>
 
 
 
@@ -31,5 +34,7 @@
     <%= f.submit "Add baby" %>
     <% end %>
 </div> -->
-<%= link_to 'Edit', edit_mom_path(@mom) %><br>
+<br></br>
+<%= link_to 'Add Baby', new_baby_path(@baby) %><br>
+<%= link_to 'Edit your Profile', edit_mom_path(@mom) %><br>
 <%= link_to 'Logout', logout_path, method: :delete %><br>

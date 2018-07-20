@@ -1,5 +1,5 @@
 <%= render partial: "baby", locals: { baby: @baby } %>
 
-
 <h3><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
 <h4><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
+<p><%= link_to "Delete", @baby, method: :delete, data: { confirm: "Really?" }%></p>

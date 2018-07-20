@@ -6,7 +6,7 @@ class DailylogsController < ApplicationController
 
   def create
     @dailylog = Dailylog.create(dailylog_params)
-    if @dailylog.save
+    if @dailylog.save && current_user.admin == true
       @baby = @dailylog.baby
       redirect_to baby_dailylogs_path(@baby)
     else
@@ -32,4 +32,6 @@ class DailylogsController < ApplicationController
   def dailylog_params
     params.require(:dailylog).permit(:time_in, :nap, :meal, :diaper, :play_time, :summary, :meds, :time_out, :baby_id, :caregiver_id)
   end
+
+
 end
