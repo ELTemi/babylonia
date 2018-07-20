@@ -11,7 +11,7 @@ DATA = {
   :mom_keys =>
     ["name", "email", "password"],
   :moms => [
-    ["Max Charles", "max@abc.com", "password"],
+    ["Maxie Charles", "maxie@abc.com", "password"],
     ["Skai Jackson", "skai@abc.com", "password"],
     ["Kaleo Elam", "kaleo@abc.com", "password"],
   ],

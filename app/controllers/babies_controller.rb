@@ -26,7 +26,7 @@ class BabiesController < ApplicationController
   def update
     @baby= Baby.find(params[:id])
     @baby.update(baby_params)
-    redirect_to mom_path(@baby.mom)
+    redirect_to baby_path(@baby)
   end
 
   def index

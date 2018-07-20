@@ -10,4 +10,5 @@ class Caregiver < ApplicationRecord
   validates :phone_number, uniqueness: true
   has_secure_password
   has_attached_file :avatar
+  validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
 end

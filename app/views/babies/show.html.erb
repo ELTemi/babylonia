@@ -1,5 +1,12 @@
+<h1>Hi, Baby <%= @baby.name %></h1>
 <%= render partial: "baby", locals: { baby: @baby } %>
 
 <h3><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
 <h4><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
+<ul>
+  <% @baby.dailylogs.each do |dailylog| %>
+    <li><%= dailylog.time_in %></li>
+  <% end %>
+</ul>
+<p><%= link_to "Edit Baby's profile", edit_baby_path(@baby)%></p>
 <p><%= link_to "Delete", @baby, method: :delete, data: { confirm: "Really?" }%></p>
