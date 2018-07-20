@@ -1,12 +1,4 @@
-<% if @baby %>
-  <% @baby.dailylogs.each do |dailylog| %>
-    <%= dailylog.nap %> - <%= dailylog.baby.name %><br>
-  <% end %><br>
-
-<% else %>
 
   <% @dailylogs.each do |dailylog| %>
     <%= dailylog.nap %> - <%= dailylog.baby.name %><br>
   <% end %><br>
-
-<% end%>

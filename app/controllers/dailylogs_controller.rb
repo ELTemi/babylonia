@@ -15,7 +15,12 @@ class DailylogsController < ApplicationController
   end
 
   def index
-    @dailylogs = Dailylog.all
+    if params[:baby_id]
+      @baby = Baby.find(params[:baby_id])
+      @dailylogs = @baby.dailylogs
+    else
+      @dailylogs = Dailylog.all
+    end
   end
 
   def show

@@ -3,21 +3,10 @@
 
 <%= render partial: "caregiver", locals: { caregiver: @caregiver } %>
 
-<% @caregiver.babies.each_with_index do |baby, index| %>
-  <%= "#{index + 1}." %>
-  <ul>
-    <%= link_to " Add Daily Log for #{baby.name}", new_dailylog_path(@dailylog) %>
-
-    <%= render partial: "babies/baby", locals: { baby: baby } %><br>
-
-    <strong><%= baby.name + "'s Mom" %><br></strong>
-    <%= render partial: "moms/mom", locals: { mom: baby.mom } %>
-  </ul>
-
+<h2>All Babies in your Care</h2>
+<% @caregiver.babies.each do |baby| %>
+  <%= link_to baby.name, baby_path(baby) %> - <%= link_to 'Add a log for this baby', new_dailylog_path %><br>
 <% end %>
 
-
-
-<%= link_to 'Add a log for a baby', new_dailylog_path %><br>
 <%= link_to 'Edit', edit_caregiver_path %><br>
 <%= link_to 'Logout', logout_path, method: :delete %><br>

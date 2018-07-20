@@ -33,7 +33,6 @@ class CaregiversController < ApplicationController
 
   def show
     @caregiver = Caregiver.find(params[:id])
-    @dailylog = Dailylog.new
   end
 
 
