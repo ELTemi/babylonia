@@ -25,6 +25,24 @@ class SessionsController < ApplicationController
   end
 
 
+  def facebook_create
+    @user = User.find_or_create_by(email: auth[:info][:email]) do |u|
+      u.name = auth[:info][:name]
+      u.email = auth[:info][:email]
+      u.avatar = auth[:info][:image]
+    end
+    @caregiver = Caregiver.find_by(email: @user.email)
+    @mom = Mom.find_by(email: @user.email)
+    if !@caregiver.blank?
+      session[:user_id] = @user.id
+      redirect_to caregiver_path(@caregiver)
+    elsif !@mom.blank?
+      session[:user_id] = @user.id
+      redirect_to mom_path(@mom)
+    else
+      render :home
+    end
+  end
 
 
   def logout
@@ -36,6 +54,10 @@ class SessionsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :admin)
+  end
+
+  def auth
+    request.env['omniauth.auth']
   end
 
 
