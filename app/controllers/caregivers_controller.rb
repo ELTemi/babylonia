@@ -1,6 +1,6 @@
 class CaregiversController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:new, :create, :index]
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @caregiver = Caregiver.new
@@ -8,6 +8,17 @@ class CaregiversController < ApplicationController
 
   def create
     @caregiver = Caregiver.create(caregiver_params)
+    if @caregiver.save
+      @user = User.create(email: @caregiver.email, password: @caregiver.password, admin: true)
+      session[:user_id] = @user.id
+      redirect_to caregiver_path(@caregiver)
+    else
+      render :new
+    end
+  end
+
+  def facebook_create
+    @caregiver = Caregiver.create(email: auth[:info][:email], name: auth[:info][:name], avatar: auth[:info][:image])
     if @caregiver.save
       @user = User.create(email: @caregiver.email, password: @caregiver.password, admin: true)
       session[:user_id] = @user.id
@@ -40,6 +51,10 @@ class CaregiversController < ApplicationController
 
   def caregiver_params
     params.require(:caregiver).permit(:name, :email, :avatar, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
+  end
+
+  def auth
+    request.env['omniauth.auth']
   end
 
 
