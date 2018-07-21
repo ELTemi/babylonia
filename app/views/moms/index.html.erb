@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+    <div class="message"><%= flash[:notice] %></div>
+  <% end %>
+
+<h2>All Moms</h2>
 <% @moms.each do |mom| %>
-  <%= render partial: 'mom', locals: { mom: mom } %>
+  <%= link_to mom.name, mom_path(mom) %><br>
 <% end %>

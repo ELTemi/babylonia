@@ -1,21 +1,9 @@
 class BabiesController < ApplicationController
 
-  def new
-    @baby = Baby.new
-    if current_user.admin == true
-      redirect_to root_url
-    else
-      render :new
-    end
-  end
-
   def create
     @baby = Baby.create(baby_params)
-    if @baby.save
-      redirect_to baby_path(@baby)
-    else
-      render :new
-    end
+    mom = Mom.new
+    redirect_to @baby.mom
   end
 
   def edit
@@ -34,12 +22,19 @@ class BabiesController < ApplicationController
 
   def show
     @baby = Baby.find(params[:id])
+    if check_mom
+      render :show
+    else
+      flash[:notice] = "You cant view another person's baby!"
+      @babies = Baby.all
+      render :index
+    end
   end
 
   def destroy
     @baby = Baby.find_by(params[:id])
     @baby.destroy
-    flash[:notite] = "Baby Profile deleted"
+    flash[:notice] = "Baby Profile deleted"
     redirect_to babies_path
   end
 
@@ -48,6 +43,10 @@ class BabiesController < ApplicationController
 
   def baby_params
     params.require(:baby).permit(:name, :sex, :dob, :avatar, :allergies, :emergency_contact, :caregiver_id, :mom_id)
+  end
+
+  def check_mom
+    (@baby.mom.email ==  current_user.email) || (@baby.caregiver.email == current_user.email)
   end
 
 

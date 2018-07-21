@@ -22,15 +22,12 @@ class MomsController < ApplicationController
   end
 
   def edit
-    if current_user
-      @mom = Mom.find(params[:id])
-    end
+    @mom = Mom.find(params[:id])
   end
 
   def update
     @mom = Mom.find(params[:id])
-    current_user
-    if current_user
+    if current_user.email = @mom.email
       @mom.update(mom_params)
       redirect_to mom_path(@mom)
     else
@@ -40,6 +37,13 @@ class MomsController < ApplicationController
 
   def show
     @mom = Mom.find(params[:id])
+    if access_mom
+      render :show
+    else
+      @moms = Mom.all
+      flash[:notice] = "You cant view another person's account!"
+      render :index
+    end
   end
 
 
@@ -52,5 +56,10 @@ class MomsController < ApplicationController
   def mom_params
     params.require(:mom).permit(:name, :email, :avatar, :phone_number, :pick_up_authorization, :password, :experience, :caregiver_ids => [])
   end
+
+  def access_mom
+    current_user.admin? || @mom.email == current_user.email
+  end
+
 
 end

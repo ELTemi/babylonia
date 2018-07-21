@@ -9,8 +9,35 @@
   <%= link_to baby.name, baby_path(baby) %> - <%= link_to "See all Logs for #{baby.name} ", baby_dailylogs_path(baby) %><br>
 <% end %>
 
+<p><strong>Add a Baby</p></strong>
+
+<%= form_for @mom.babies.build do |f| %> <br>
+  <%= f.hidden_field :mom_id, :value => @mom.id %><br>
+  Name <br>
+  <%= f.text_field :name %><br>
+
+  Upload your picture<br>
+  <%= f.file_field :avatar%><br>
+
+  Emergency Contact number<br>
+  <%= f.text_field :emergency_contact%><br>
+
+  date of Birth<br>
+  <%= f.date_field :dob %><br>
+
+  Sex<br>
+  <%= f.text_field :sex %><br>
+
+  Allergies<br>
+  <%= f.text_field :allergies %><br>
+
+  Select a Caregiver
+  <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
 
 
+  <%= f.submit %>
+
+<% end %>
 
 
 
@@ -38,6 +65,5 @@
     <% end %>
 </div> -->
 <br></br>
-<%= link_to 'Add Baby', new_baby_path(@baby) %><br>
 <%= link_to 'Edit your Profile', edit_mom_path(@mom) %><br>
 <%= link_to 'Logout', logout_path, method: :delete %><br>

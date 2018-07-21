@@ -1,6 +1,6 @@
 <%= image_tag mom.avatar.url %><br>
 
-Name:<%= mom.name %><br>
+Name:<%= link_to mom.name, mom_path(mom) %><br>
 Phone Number: <%= mom.phone_number%><br>
 Email: <%= mom.email%><br>
 Who else can pick up your child: <%= mom.pick_up_authorization%><br>

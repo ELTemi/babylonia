@@ -1,3 +1,4 @@
+<h2>All Caregivers</h2>
 <% @caregivers.each do |caregiver| %>
-  <%= render partial: 'caregiver', locals: { caregiver: caregiver } %>
+  <%= link_to caregiver.name, caregiver_path(caregiver) %><br>
 <% end %>
