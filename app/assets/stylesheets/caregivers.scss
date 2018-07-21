@@ -12,18 +12,21 @@
   margin: 5px;
   text-align: left;
   background-color: #f7f1e3;
-
+  height: auto;
 }
 
 .page-header {
   width: 350px;
   padding-left: 30px;
   padding-right: 30px;
-  padding-top: 45px;
-  padding-bottom: 45px;
+  padding-top: 0px;
+  padding-bottom: 5px;
   border-radius: 10px;
   margin: 5px;
   text-align: left;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  line-height: 1.428571429;
 }
 
 img {
@@ -34,4 +37,10 @@ img {
 body {
   padding: 550px;
   background-color: #ffcccc;
+}
+
+.create-button {
+  background-color: #3ae374;
+  height: 40px;
+  font-size: solid 30px;
 }

@@ -10,31 +10,32 @@
 
 <div class="center form-group">
   <div class="form-group">
-    <%= form_for @caregiver, html: {multipart: true} do |f| %>
-      Name <br>
-      <%= f.text_field :name %><br>
-      Email <br>
-      <%= f.text_field :email %><br>
+    <%= form_for @caregiver, html: {multipart: true, class: "form-group"} do |f| %>
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "form-group" %><br>
 
-      Upload your picture<br>
-      <%= f.file_field :avatar %><br>
+      <%= f.label :email %><br>
+      <%= f.text_field :email, class: "form-group" %><br>
 
-      Primary Contact number<br>
-      <%= f.text_field :phone_number%><br>
+      <%= f.label "Upload your Picture" %><br>
+      <%= f.file_field :avatar, class: "form-group"%><br>
 
-      How many years of childcare experience do you have <br>
-      <%= f.text_field :experience %><br>
+      <%= f.label :phone_number %><br>
+      <%= f.text_field :phone_number, class: "form-group"%><br>
 
-      Age(in years)<br>
-      <%= f.text_field :age %><br>
+      <%= f.label :experience, "# Years of Experience" %><br>
+      <%= f.text_field :experience, class: "form-group" %><br>
 
-      Home Address<br>
-      <%= f.text_field :address %><br>
+      <%= f.label :age, "Age(in years)" %><br>
+      <%= f.text_field :age, class: "form-group" %><br>
 
-      Password
-      <%= f.password_field :password %><br>
+      <%= f.label :address %><br>
+      <%= f.text_field :address, class: "form-group" %><br>
 
-      <%= f.submit %>
+      <%= f.label :password  %><br>
+      <%= f.password_field :password, class: "form-group"%><br>
+
+      <%= f.submit class: "create-button" %>
     <% end %>
   </div>
 
