@@ -13,38 +13,40 @@
   </div>
 <% end %>
 
+<div class="center">
+  <%= form_for @dailylog do |f| %>
 
-<%= form_for @dailylog do |f| %>
+    Time In <br>
+    <%= f.datetime_local_field :time_in %><br>
 
-  Time In <br>
-  <%= f.datetime_local_field :time_in %><br>
+    Number of Naps today<br>
+    <%= f.text_field :nap%><br>
 
-  Number of Naps today<br>
-  <%= f.text_field :nap%><br>
+    Number of Times Baby Ate today<br>
+    <%= f.text_field :meal%><br>
 
-  Number of Times Baby Ate today<br>
-  <%= f.text_field :meal%><br>
+    How many diaper changes<br>
+    <%= f.text_field :diaper%><br>
 
-  How many diaper changes<br>
-  <%= f.text_field :diaper%><br>
+    How many hours did the baby play for?<br>
+    <%= f.text_field :play_time %><br>
 
-  How many hours did the baby play for?<br>
-  <%= f.text_field :play_time %><br>
+    Did the baby have any meds today? check yes if true<br>
+    <%= f.check_box :meds %><br>
 
-  Did the baby have any meds today? check yes if true<br>
-  <%= f.check_box :meds %><br>
+    Any comments baby's general behaviour day? <br>
+    <%= f.text_field :summary %><br>
 
-  Any comments baby's general behaviour day? <br>
-  <%= f.text_field :summary %><br>
+    Time Out <br>
+    <%= f.datetime_local_field :time_in %><br>
 
-  Time Out <br>
-  <%= f.datetime_local_field :time_in %><br>
+    Select a baby for this Log
+    <%= f.collection_select :baby_id, Baby.all, :id, :name %><br>
 
-  Select a baby for this Log
-  <%= f.collection_select :baby_id, Baby.all, :id, :name %><br>
+    Select a Caregiver for this Log
+    <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
 
-  Select a Caregiver for this Log
-  <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
+    <%= f.submit %>
+  <% end %>
 
-  <%= f.submit %>
-<% end %>
+</div>

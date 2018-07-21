@@ -21,6 +21,6 @@ class Caregiver < ApplicationRecord
   end
 
   def self.medium_experienced
-    where("experience > 5, experience < 10")
+    where("experience > 5 AND experience <= 10")
   end
 end

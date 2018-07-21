@@ -13,7 +13,8 @@
   </div>
 <% end %>
 
-<%= form_for @mom, html: {multipart: true} do |f| %>
+<div class="">
+  <%= form_for @mom, html: {multipart: true} do |f| %>
   Name <br>
   <%= f.text_field :name %><br>
   Email <br>
@@ -33,3 +34,5 @@
 
   <%= f.submit %>
 <% end %>
+
+</div>

@@ -20,7 +20,14 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
 }
+
+.form-group {
+    margin-bottom: 15px;
+  }
 
 .message {
   color: red;
@@ -43,7 +50,6 @@ body {
 }
 
 .center {
-  text-align: center;
 }
 
 .pic,
