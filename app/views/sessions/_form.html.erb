@@ -1,5 +1,12 @@
-<%= form_for :user do |f| %>
-  Email: <%= f.text_field :email %> <br>
-  Password: <%= f.password_field :password %><br>
-  <%= f.submit "Login" %>
- <% end %>
+
+<% if flash[:notice] %>
+    <div class="message"><%= flash[:notice] %></div>
+  <% end %>
+
+<div class="">
+  <%= form_for :user, url: login_path do |f| %>
+    Email: <%= f.text_field :email %> <br>
+    Password: <%= f.password_field :password %><br>
+    <%= f.submit "Login" %>
+   <% end %>
+</div>

@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
   def login
     @user = User.new
-    render :login
   end
 
   def create
@@ -20,6 +19,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to mom_path(@mom)
     else
+      flash[:notice] = "Invalid email and/or password combination!"
       render :login
     end
   end

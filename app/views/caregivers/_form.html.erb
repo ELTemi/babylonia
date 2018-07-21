@@ -1,41 +1,39 @@
 <% if @caregiver.errors.any? %>
   <div id="error_explanation">
-    <h2>
-      <%= pluralize(@caregiver.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
-
     <ul>
-    <% @caregiver.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
+      <% @caregiver.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
     </ul>
   </div>
 <% end %>
 
-<%= form_for @caregiver, html: {multipart: true} do |f| %>
-  Name <br>
-  <%= f.text_field :name %><br>
-  Email <br>
-  <%= f.text_field :email %><br>
+<div>
+  <%= form_for @caregiver, html: {multipart: true} do |f| %>
+    Name <br>
+    <%= f.text_field :name %><br>
+    Email <br>
+    <%= f.text_field :email %><br>
 
-  Upload your picture<br>
-  <%= f.file_field :avatar %><br>
+    Upload your picture<br>
+    <%= f.file_field :avatar %><br>
 
-  Primary Contact number<br>
-  <%= f.text_field :phone_number%><br>
+    Primary Contact number<br>
+    <%= f.text_field :phone_number%><br>
 
-  How many years of childcare experience do you have <br>
-  <%= f.text_field :experience %><br>
+    How many years of childcare experience do you have <br>
+    <%= f.text_field :experience %><br>
 
-  Age(in years)<br>
-  <%= f.text_field :age %><br>
+    Age(in years)<br>
+    <%= f.text_field :age %><br>
 
-  Home Address<br>
-  <%= f.text_field :address %><br>
+    Home Address<br>
+    <%= f.text_field :address %><br>
 
-  Password
-  <%= f.password_field :password %><br>
+    Password
+    <%= f.password_field :password %><br>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.submit %>
+  <% end %>
+
+</div>
