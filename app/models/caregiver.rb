@@ -11,4 +11,16 @@ class Caregiver < ApplicationRecord
   has_attached_file :avatar
   validates_attachment_file_name :avatar, :matches => [/png\Z/, /jpe?g\Z/, /gif\Z/]
 
+
+  def self.most_experienced
+    where("experience > ?", 10)
+  end
+
+  def self.least_experienced
+    where("experience <= ?", 5)
+  end
+
+  def self.medium_experienced
+    where("experience > 5, experience < 10")
+  end
 end

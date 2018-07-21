@@ -1,3 +1,12 @@
+<div>
+  <h3>Search caregivers:</h3>
+  <%= form_tag("/caregivers", method: "get") do %>
+    <%= select_tag "experience", options_for_select(["5 years - 10 years", " > 10 years "]), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+
 <h2>All Caregivers</h2>
 <% @caregivers.each do |caregiver| %>
   <%= link_to caregiver.name, caregiver_path(caregiver) %><br>

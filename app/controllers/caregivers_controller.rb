@@ -39,6 +39,14 @@ class CaregiversController < ApplicationController
   end
 
   def index
+    binding.pry
+    if !params[:experience].blank? && params[:experience] == "5 years - 10 years"
+      @caregivers == Caregiver.medium_experienced
+    elsif !params[:experience].blank? && params[:experience] == " < 5 years"
+      @caregivers == Caregiver.least_experienced
+    elsif !params[:experience].blank? && params[:experience] == " > 10 years"
+      @caregivers == Caregiver.most_experienced
+    end
     @caregivers = Caregiver.all
   end
 
