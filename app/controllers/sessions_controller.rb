@@ -26,11 +26,7 @@ class SessionsController < ApplicationController
 
 
   def facebook_create
-    @user = User.find_or_create_by(email: auth[:info][:email]) do |u|
-      u.name = auth[:info][:name]
-      u.email = auth[:info][:email]
-      u.avatar = auth[:info][:image]
-    end
+    @user = User.find_or_create_by(email: auth[:info][:email]) 
     @caregiver = Caregiver.find_by(email: @user.email)
     @mom = Mom.find_by(email: @user.email)
     if !@caregiver.blank?
