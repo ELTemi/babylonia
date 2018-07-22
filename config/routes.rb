@@ -15,6 +15,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#logout'
   get '/auth/facebook/callback' => 'sessions#facebook_create'
-  get '/auth/facebook/callback' => 'caregivers#facebook_create'
 
 end

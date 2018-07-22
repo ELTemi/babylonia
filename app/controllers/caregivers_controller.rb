@@ -17,16 +17,6 @@ class CaregiversController < ApplicationController
     end
   end
 
-  def facebook_create
-    @caregiver = Caregiver.create(email: auth[:info][:email], name: auth[:info][:name], avatar: auth[:info][:image])
-    if @caregiver.save
-      @user = User.create(email: @caregiver.email, password: @caregiver.password, admin: true)
-      session[:user_id] = @user.id
-      redirect_to caregiver_path(@caregiver)
-    else
-      render :new
-    end
-  end
 
   def edit
     @caregiver = Caregiver.find(params[:id])
