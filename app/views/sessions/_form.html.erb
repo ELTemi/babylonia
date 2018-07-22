@@ -4,9 +4,9 @@
   <% end %>
 
 <div class="">
-  <%= form_for :user, url: login_path do |f| %>
-    Email: <%= f.text_field :email %> <br>
-    Password: <%= f.password_field :password %><br>
-    <%= f.submit "Login" %>
+  <%= form_for :user, url: login_path, class: "form-group" do |f| %>
+    Email: <%= f.text_field :email, class: "form-group" %> <br>
+    Password: <%= f.password_field :password, class: "form-group" %><br>
+    <%= f.submit "Login",  class: "create-button"%>
    <% end %>
 </div>

@@ -1,4 +1,6 @@
 class BabiesController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def create
     @baby = Baby.create(baby_params)
@@ -46,7 +48,7 @@ class BabiesController < ApplicationController
   end
 
   def check_mom
-    (@baby.mom.email ==  current_user.email) || (@baby.caregiver.email == current_user.email)
+      (@baby.mom.email ==  current_user.email) || (@baby.caregiver.email == current_user.email)
   end
 
 
