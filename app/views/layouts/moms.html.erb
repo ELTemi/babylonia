@@ -15,7 +15,7 @@
         <ul>
           <li><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
           <li><%= link_to "Logout #{@mom.name}" , logout_path, method: :delete %><br></li>
-          <li><a class="navbar-brand" href="<%= "/moms" %>"/>All Caregivers</a></li>
+          <li><a class="navbar-brand" href="<%= "/moms" %>"/>All Moms</a></li>
           <li><a class="navbar-brand" href="<%= "/babies" %>"/>All Babies</a></li>
           <li><%= link_to 'Edit your Profile', edit_mom_path(@mom) %><br></li>
         </ul>

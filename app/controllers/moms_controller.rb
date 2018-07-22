@@ -1,7 +1,8 @@
 class MomsController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index, :new, :create]
-  layout  "moms"
+  layout "moms", except: [:new, :edit]
+
 
   def index
     @mom = Mom.find_by(email: current_user.email)
