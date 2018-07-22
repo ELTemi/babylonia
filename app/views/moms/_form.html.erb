@@ -13,26 +13,26 @@
   </div>
 <% end %>
 
-<div class="">
-  <%= form_for @mom, html: {multipart: true} do |f| %>
+<div class="form-group" >
+  <%= form_for @mom, html: {multipart: true, class: "form-group" } do |f| %>
   Name <br>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :name, class: "form-group"  %><br>
   Email <br>
-  <%= f.text_field :email %><br>
+  <%= f.text_field :email, class: "form-group"  %><br>
 
   Upload your picture<br>
-  <%= f.file_field :avatar%><br>
+  <%= f.file_field :avatar, class: "form-group" %><br>
 
   Primary Contact number<br>
-  <%= f.text_field :phone_number%><br>
+  <%= f.text_field :phone_number, class: "form-group" %><br>
 
   Who can pick up your child apart from you?<br>
-  <%= f.text_field :pick_up_authorization%><br>
+  <%= f.text_field :pick_up_authorization, class: "form-group" %><br>
 
   Password
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password, class: "form-group"  %><br>
 
-  <%= f.submit %>
+  <%= f.submit class: "create-button" %>
 <% end %>
 
 </div>
