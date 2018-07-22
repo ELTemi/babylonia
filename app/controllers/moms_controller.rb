@@ -4,6 +4,7 @@ class MomsController < ApplicationController
   layout  "moms"
 
   def index
+    @mom = Mom.find_by(email: current_user.email)
     @moms= Mom.all
   end
 

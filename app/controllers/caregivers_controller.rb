@@ -1,7 +1,7 @@
 class CaregiversController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
-  layout  "caregivers"
+  layout "caregivers"
 
   def new
     @caregiver = Caregiver.new
@@ -30,6 +30,7 @@ class CaregiversController < ApplicationController
   end
 
   def index
+    @caregiver = Caregiver.find_by(email: current_user.email)
     if !params[:experience].blank? && params[:experience] == "5 years - 10 years"
       @caregivers = Caregiver.medium_experienced
     elsif !params[:experience].blank? && params[:experience] == " < 5 years"
@@ -39,6 +40,7 @@ class CaregiversController < ApplicationController
     else
       @caregivers = Caregiver.all
     end
+
   end
 
   def show
@@ -52,9 +54,6 @@ class CaregiversController < ApplicationController
     params.require(:caregiver).permit(:name, :email, :avatar, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
   end
 
-  def auth
-    request.env['omniauth.auth']
-  end
 
 
 end
