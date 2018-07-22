@@ -10,7 +10,21 @@
   </head>
 
   <body>
-    
+    <div>
+      <ul>
+        <li><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
+        <li><a class="navbar-brand" href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
+        <li><a class="navbar-brand" href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
+        <li><a class="navbar-brand" href="<%= "/login" %>"/>Log In</a></li>
+        <li><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
     <%= yield %>
   </body>
-</html>
+
+  <div style="font-size:10px !important; color:#666;">
+    <footer>
+      <p>Copyright ©2018 Babylonia Inc.</p>
+    </footer>
+  </html>
+  </div>
