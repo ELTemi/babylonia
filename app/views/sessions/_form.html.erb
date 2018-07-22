@@ -1,7 +1,7 @@
 
 <% if flash[:notice] %>
     <div class="message"><%= flash[:notice] %></div>
-  <% end %>
+<% end %>
 
 <div class="">
   <%= form_for :user, url: login_path, class: "form-group" do |f| %>

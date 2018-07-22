@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
 
   private
   def require_login
+    flash[:notice] = "Please log in to Continue"
     redirect_to login_path unless session.include? :user_id
   end
 end
