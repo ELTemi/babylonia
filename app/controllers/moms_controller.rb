@@ -5,8 +5,12 @@ class MomsController < ApplicationController
 
 
   def index
-    @mom = Mom.find_by(email: current_user.email)
-    @moms= Mom.all
+    if logged_in?
+      @moms= Mom.all
+      @mom = Mom.find_by(email: current_user.email)
+    else
+      require_login
+    end
   end
 
   def new
@@ -16,7 +20,7 @@ class MomsController < ApplicationController
   def create
     @mom = Mom.create(mom_params)
     if @mom.save
-      @user = User.create(email: @mom.email, password: @mom.password)
+      @user = User.create(email: @mom.email, password: @mom.password, admin: false)
       session[:user_id] = @user.id
       redirect_to mom_path(@mom)
     else
