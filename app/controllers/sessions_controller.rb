@@ -5,7 +5,18 @@ class SessionsController < ApplicationController
 
 
   def login
-    @user = User.new
+    if logged_in?
+      current_user = User.find(session[:user_id])
+      @authorized_user ||= (Mom.find_by(email: current_user.email) || Caregiver.find_by(email: current_user.email))
+      if current_user.admin == true
+        redirect_to caregiver_path(@authorized_user)
+      else
+        redirect_to mom_path(@authorized_user)
+      end
+    else
+      @user = User.new
+      render :login
+    end
   end
 
   def create
@@ -26,7 +37,7 @@ class SessionsController < ApplicationController
 
 
   def facebook_create
-    @user = User.find_or_create_by(email: auth[:info][:email]) 
+    @user = User.find_or_create_by(email: auth[:info][:email])
     @caregiver = Caregiver.find_by(email: @user.email)
     @mom = Mom.find_by(email: @user.email)
     if !@caregiver.blank?
@@ -55,6 +66,8 @@ class SessionsController < ApplicationController
   def auth
     request.env['omniauth.auth']
   end
+
+
 
 
 end
