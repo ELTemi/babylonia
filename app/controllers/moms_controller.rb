@@ -43,7 +43,7 @@ class MomsController < ApplicationController
 
   def show
     @mom = Mom.find(params[:id])
-    if access_mom
+    if !@mom.blank? && @mom.email == current_user.email
       render :show
     else
       @moms = Mom.all
@@ -63,9 +63,6 @@ class MomsController < ApplicationController
     params.require(:mom).permit(:name, :email, :avatar, :phone_number, :pick_up_authorization, :password, :experience, :caregiver_ids => [])
   end
 
-  def access_mom
-    current_user.admin? || @mom.email == current_user.email
-  end
 
   def logged_in_as_caregiver?
     logged_in? && current_user.admin == true

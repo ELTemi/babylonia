@@ -46,6 +46,13 @@ class CaregiversController < ApplicationController
 
   def show
     @caregiver = Caregiver.find(params[:id])
+    if !@caregiver.blank? && @caregiver.email == current_user.email
+      render :show
+    else
+      @caregivers = Caregiver.all
+      flash[:notice] = "You cant view another person's account!"
+      render :index
+    end
   end
 
 
@@ -54,7 +61,6 @@ class CaregiversController < ApplicationController
   def caregiver_params
     params.require(:caregiver).permit(:name, :email, :avatar, :phone_number, :rating, :age, :address, :availability, :password, :experience, :baby_ids => [])
   end
-
 
 
 
