@@ -11,12 +11,12 @@
 
   <body>
     <div>
-      <ul>
-        <li><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
-        <li><a class="navbar-brand" href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
-        <li><a class="navbar-brand" href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
-        <li><a class="navbar-brand" href="<%= "/login" %>"/>Log In</a></li>
-        <li><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
+      <ul class="nav">
+        <li class="nav"><a  href="<%= root_url %>"/>Home</a></li>
+        <li class="nav"><a  href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
+        <li class="nav"><a  href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
+        <li class="nav"><a class="nav" href="<%= "/login" %>"/>Log In</a></li>
+        <li class="nav"><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
       </ul>
     </div><!--/.nav-collapse -->
     <%= yield %>

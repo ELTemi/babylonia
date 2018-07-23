@@ -9,8 +9,8 @@
   <%= link_to baby.name, baby_path(baby) %>
   <ul>
     <li>Mom: <%= link_to baby.mom.name, mom_path(baby.mom)%> <br><br></li>
-    <li>Caregiver:- <%= link_to baby.caregiver.name, caregiver_path(baby.caregiver)%></li>
-    <li> <%= link_to "Create a new log", new_baby_dailylog_path(baby) %></li>
+    <li>Caregiver: <%= link_to baby.caregiver.name, caregiver_path(baby.caregiver)%></li>
+    <li> <%= link_to "Create a new log", new_dailylog_path %></li>
     <li> <%= link_to "All Logs", dailylogs_path %></li>
   </ul>
 <% end %>

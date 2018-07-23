@@ -12,22 +12,22 @@
   <body>
     <% if session[:user_id] %>
       <div>
-        <ul>
-          <li><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
-          <li><%= link_to "Logout #{@mom.name}" , logout_path, method: :delete %><br></li>
-          <li><a class="navbar-brand" href="<%= "/moms" %>"/>All Moms</a></li>
-          <li><a class="navbar-brand" href="<%= "/babies" %>"/>All Babies</a></li>
-          <li><%= link_to 'Edit your Profile', edit_mom_path(@mom) %><br></li>
+        <ul class="nav">
+          <li class="nav"><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
+          <li class="nav"><%= link_to "Logout #{@mom.name}" , logout_path, method: :delete %><br></li>
+          <li class="nav"><a class="navbar-brand" href="<%= "/moms" %>"/>All Moms</a></li>
+          <li class="nav"><a class="navbar-brand" href="<%= "/babies" %>"/>All Babies</a></li>
+          <li class="nav"><%= link_to 'Edit your Profile', edit_mom_path(@mom) %><br></li>
         </ul>
       </div>
     <% else %>
       <div>
-        <ul>
-          <li><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
-          <li><a class="navbar-brand" href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
-          <li><a class="navbar-brand" href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
-          <li><a class="navbar-brand" href="<%= "/login" %>"/>Log In</a></li>
-          <li><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
+        <ul class="nav">
+          <li class="nav"><a href="<%= root_url %>"/>Home</a></li>
+          <li class="nav"><a href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
+          <li class="nav"><a href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
+          <li class="nav"><a href="<%= "/login" %>"/>Log In</a></li>
+          <li class="nav"><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
         </ul>
       </div>
     <% end %>
