@@ -7,7 +7,6 @@ class MomsController < ApplicationController
   def index
     if logged_in?
       @moms= Mom.all
-      @mom = Mom.find_by(email: current_user.email)
     else
       require_login
     end
@@ -66,6 +65,10 @@ class MomsController < ApplicationController
 
   def access_mom
     current_user.admin? || @mom.email == current_user.email
+  end
+
+  def logged_in_as_caregiver?
+    logged_in? && current_user.admin == true
   end
 
 

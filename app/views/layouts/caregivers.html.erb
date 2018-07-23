@@ -14,10 +14,9 @@
       <div>
         <ul class="nav">
           <li class="nav"><a href="<%= root_url %>"/>Home</a></li>
-          <li class="nav"><%= link_to "Logout #{@caregiver.name}" , logout_path, method: :delete %><br></li>
+          <li class="nav"><%= link_to "Logout" , logout_path, method: :delete %><br></li>
           <li class="nav"><a href="<%= "/moms" %>"/>All Moms</a></li>
           <li class="nav"><a href="<%= "/babies" %>"/>All Babies</a></li>
-          <li class="nav"><%= link_to 'Edit your Profile', edit_caregiver_path(@caregiver) %><br></li>
         </ul>
       </div>
     <% else %>
