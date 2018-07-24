@@ -28,7 +28,6 @@ class DailylogsController < ApplicationController
   end
 
   def show
-    binding.pry
     @dailylog = Dailylog.find(params[:id])
   end
 

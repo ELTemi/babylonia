@@ -7,5 +7,7 @@ class Dailylog < ApplicationRecord
     time_in.strftime("%A, %B %dth, %Y")
   end
 
-  
+  def date_format_for_time_out
+    time_out.strftime("%A, %B %dth, %Y")
+  end
 end
