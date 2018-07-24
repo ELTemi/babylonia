@@ -1,5 +1,6 @@
 class DailylogsController < ApplicationController
 
+
   def new
    @dailylog = Dailylog.new
   end
