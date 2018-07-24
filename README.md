@@ -1,28 +1,48 @@
-# README
+# README for Babylonia App
 
-This application allows caregivers provide reports of the babies in their care. Moms will be able to view their child's activities every day. There will be 2 types users( Caregiver & Mom) with different views and accesses. I have a Baby Model, DailyLog Model and the Report Model.
+The Babylonia App is a simple way of monitoring your baby when they are with any type of caregivers from nannies to daycare nursery assitants. There are 4 main models; Mom, Caregiver, Dailylog and Baby. Only a mom can add a baby and only a caregiver can add a log for a baby
 
-Dailylog will belong to a report and report will have many logs.
+# License
+----------
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+All source code in this app is available jointly under the MIT License and the Beerware License. See License below for details.
 
-Things you may want to cover:
+# Getting started
+-----------------
+To get started with the app, clone the repo and then install the needed gems:
 
-* Ruby version
+$ bundle install
 
-* System dependencies
+# Next, migrate the database:
 
-* Configuration
+$ rails db:migrate
 
-* Database creation
+# To view the application
 
-* Database initialization
+$ rails server
+After running the server successfully, depending on the type of operating system you are using, type;
+https://localhost:3000 in your browser and you can start to use the application.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+# For more information, see the Ruby on Rails Tutorial book.
 
-* Deployment instructions
+# The MIT License (MIT)
 
-* ...
+Copyright (c) 2013 Beat
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
