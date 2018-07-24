@@ -33,14 +33,6 @@ class BabiesController < ApplicationController
     end
   end
 
-  def destroy
-    @baby = Baby.find_by(params[:id])
-    @baby.destroy
-    flash[:notice] = "Baby Profile deleted"
-    redirect_to babies_path
-  end
-
-
   private
 
   def baby_params

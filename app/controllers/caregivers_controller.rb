@@ -41,7 +41,6 @@ class CaregiversController < ApplicationController
     else
       @caregivers = Caregiver.all
     end
-
   end
 
   def show

@@ -15,7 +15,7 @@
 
 <div class="center">
   <%= form_for @dailylog, class: "form-group" do |f| %>
-
+  <%= f.hidden_field :baby_id, :value => params[:baby_id] %><br>
     Time In <br>
     <%= f.datetime_local_field :time_in, class: "form-group" %><br>
 
@@ -40,11 +40,8 @@
     Time Out <br>
     <%= f.datetime_local_field :time_in, class: "form-group" %><br>
 
-    Select a baby for this Log
-    <%= f.collection_select :baby_id, Baby.all, :id, :name, class: "form-group" %><br>
-
-    Select a Caregiver for this Log
-    <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name, class: "form-group" %><br>
+    Caregiver
+    <%= f.text_field :caregiver_id, :value => @caregiver.name, class: "form-group" %><br>
 
     <%= f.submit class: "create-button"%>
   <% end %>

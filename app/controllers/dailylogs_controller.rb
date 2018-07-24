@@ -2,6 +2,8 @@ class DailylogsController < ApplicationController
 
 
   def new
+   @baby = Baby.find(params[:baby_id])
+   @caregiver = @baby.caregiver
    @dailylog = Dailylog.new
   end
 
