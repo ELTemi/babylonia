@@ -1,6 +1,6 @@
 class CaregiversController < ApplicationController
   before_action :require_login
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :most_experienced]
   layout "caregivers", except: [:new, :edit]
 
 
@@ -54,6 +54,11 @@ class CaregiversController < ApplicationController
       render :index
     end
   end
+
+  def most_experienced
+    @caregivers = Caregiver.most_experienced
+  end
+
 
 
   private

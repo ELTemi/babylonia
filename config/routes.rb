@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'sessions#home'
 
   resources :dailylogs
-  resources :caregivers
+  resources :caregivers do
+    get 'most_experienced', on: :collection
+  end
   resources :babies
   resources :moms
 
@@ -15,5 +17,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#logout'
   get '/auth/facebook/callback' => 'sessions#facebook_create'
+
 
 end
