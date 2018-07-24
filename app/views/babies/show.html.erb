@@ -5,7 +5,7 @@
 <h4><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
 <ul>
   <% @baby.dailylogs.each do |dailylog| %>
-    <li><%= link_to dailylog.date_format, dailylog_path(dailylog) %></li>
+    <li><%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %></li>
   <% end %>
 </ul>
 <p><%= link_to "Edit Baby's profile", edit_baby_path(@baby)%></p>
