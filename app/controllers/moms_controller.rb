@@ -1,7 +1,7 @@
 class MomsController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:index, :new, :create]
-  layout "moms", except: [:new, :edit]
+  #layout "moms", except: [:new, :edit]
 
 
   def index

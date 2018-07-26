@@ -1,7 +1,7 @@
 class CaregiversController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create, :most_experienced]
-  layout "caregivers", except: [:new, :edit]
+  #layout "caregivers", except: [:new, :edit]
 
 
   def new

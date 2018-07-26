@@ -1,0 +1,28 @@
+
+<% if !session[:user_id].blank? %>
+  <% if logged_in_as_mom? %>
+
+    <li class="nav"><a href="<%= root_url %>"/>Home</a></li>
+    <li class="nav"><%= link_to "Your Profile" , mom_path(@mom) %><br></li>
+    <li class="nav"><%= link_to "Logout" , logout_path, method: :delete %><br></li>
+    <li class="nav"><a href="<%= "/moms" %>"/>All Moms</a></li>
+    <li class="nav"><a href="<%= "/babies" %>"/>All Babies</a></li>
+
+  <% else logged_in_as_caregiver? %>
+
+    <li class="nav"><a class="navbar-brand" href="<%= root_url %>"/>Home</a></li>
+    <li class="nav"><%= link_to "Your Profile" , caregiver_path(@caregiver) %><br></li>
+    <li class="nav"><%= link_to "Logout" , logout_path, method: :delete %><br></li>
+    <li class="nav"><a class="navbar-brand" href="<%= "/moms" %>"/>All Moms</a></li>
+    <li class="nav"><a class="navbar-brand" href="<%= "/babies" %>"/>All Babies</a></li>
+
+  <%end%>
+
+<% else %>
+  <li class="nav"><a  href="<%= root_url %>"/>Home</a></li>
+  <li class="nav"><a  href="<%= "/caregivers/new" %>"/>Sign Up as a Caregiver </a></li>
+  <li class="nav"><a  href="<%= "/moms/new" %>"/>Sign Up as a Mom</a></li>
+  <li class="nav"><a class="nav" href="<%= "/login" %>"/>Log In</a></li>
+  <li class="nav"><%= link_to('Log in with Facebook!', '/auth/facebook') %></li>
+
+<%end%>
