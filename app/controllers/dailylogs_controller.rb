@@ -21,9 +21,9 @@ class DailylogsController < ApplicationController
   def index
     if params[:baby_id]
       @baby = Baby.find(params[:baby_id])
-      @dailylogs = @baby.dailylogs
+      @dailylogs = @baby.dailylogs.order(:time_in)
     else
-      @dailylogs = Dailylog.all
+      @dailylogs = Dailylog.all.order(:time_in)
     end
   end
 

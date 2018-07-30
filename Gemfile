@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source "https://rails-assets.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.3.1'
@@ -32,6 +33,9 @@ gem 'paperclip'
 gem "omniauth"
 
 gem 'omniauth-facebook'
+
+gem 'rails-assets-bootstrap', ">= 4.0.0.alpha.2"
+gem 'rails-assets-tether'
 
 gem 'dotenv-rails'
 # Use Redis adapter to run Action Cable in production
