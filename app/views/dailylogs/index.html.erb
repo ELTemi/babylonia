@@ -7,9 +7,7 @@
 
 <div>
   <% @dailylogs.each do |dailylog| %>
-    <% if dailylog.baby %>
       <%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %> <br>
-    <% end %>
   <% end %><br>
 </div>
 
