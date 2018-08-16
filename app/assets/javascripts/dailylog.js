@@ -4,21 +4,9 @@ $(document).ready(function() {
 
 function addEventListeners() {
   $(".js-more").click(() => showMoreLogs())
-
-  /* $("h4.logs-js").click(function(event) {
-    event.preventDefault();
-    var id = $(this).data("id");
-    $.get("/dailylogs", function(data) {
-      var logs = data
-      var log = ""
-      logs.forEach(function(log) {
-        log += '<li class="js-logs" data-id="' + log["id"] + '">'  + log["time_in"] +   log["summary"] + '</li>';
-      });
-
-      $("div").html(log)
-    })
-  }) */
+  $(".js-next").click(() => showNextLog())
 }
+
 
 function showMoreLogs() {
 
@@ -71,15 +59,27 @@ function showMoreLogs() {
 
       $("div.logs").empty();
       $("div.logs").append(logsList)
+    })
+  }
+}
 
+function showNextLog() {
+  var nextId = parseInt($(".js-next").attr("data-id")) + 1
+  $.get("/dailylogs/" + nextId + "/log", function(data) {
+    const log = data
+    $(".logBaby").text("Baby: " + log["baby"]["name"])
+    $(".logDay").text(log["date_format_for_time_in"])
+    $(".logTimeIn").text("Time In: " + log["time_in_format"])
+    $(".logNap").text("Napped " + log["nap"] + " times")
+    $(".logMeal").text("Ate " + log["meal"] + " times")
+    $(".logPlay").text("Played for " + log["play_time"] + " hours")
+    $(".logDiaper").text("Changed diapers " + log["diaper"] + " times")
+    $(".logComments").text("General Comments for Today: " + log["summary"])
+    $(".logTimeOut").text("Time Out: " + log["time_out_format"])
+    $(".js-next").attr("data-id", data["id"]);
     })
   }
 
-  function showNextLog() {
-    
-  }
-
-}
 
 /*
 if babyID exists on the logs index show page with jquery
