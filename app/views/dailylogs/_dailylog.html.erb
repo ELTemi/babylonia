@@ -1,6 +1,8 @@
-<strong><%= dailylog.date_format_for_time_in %></strong><br>
-  Napped <%= dailylog.nap %> times<br>
-  Ate <%= dailylog.meal %> times <br>
-  Played for <%= dailylog.play_time %> hours<br>
-  Changed diapers <%= dailylog.diaper %> times <br>
-  General Comments for Today: <%= dailylog.summary %><br>
+<h1 class="logDay"><strong><%= dailylog.date_format_for_time_in %></strong><br></h1>
+  <p class="logTimeIn">Time In: <%= dailylog.time_in_format %></p><br>
+  <p class="logNap">Napped <%= dailylog.nap %> times </p><br>
+  <p class="logMeal">Ate <%= dailylog.meal %> times </p><br>
+  <p class="logPlay">Played for <%= dailylog.play_time %> hours</p><br>
+  <p class="logDiaper">Changed diapers <%= dailylog.diaper %> times </p> <br>
+  <p class="logComments">General Comments for Today: <%= dailylog.summary %></p><br>
+  <p class="logTimeOut">Time Out: <%= dailylog.time_out_format %></p><br>
