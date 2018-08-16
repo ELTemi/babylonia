@@ -1,7 +1,27 @@
 <h1>All Logs</h1>
-  <% @dailylogs.each do |dailylog| %>
-    <% if dailylog.baby %>
-      <%= link_to dailylog.baby.name, baby_path(dailylog.baby) %><br>
-      <%= render partial: "dailylog", locals: { dailylog: dailylog } %>
-    <% end %>
-  <% end %><br>
+
+<div class="logs">
+  <% if @dailylogs[0].baby %>
+    <%= link_to @dailylogs[0].baby.name, baby_path(@dailylogs[0].baby) %><br>
+    <%= render partial: "dailylog", locals: { dailylog: @dailylogs[0] } %>
+  <% end %>
+  <p><strong>There are <%= @dailylogs.count - 1 %> logs left to see. Click the Button below to see all logs</strong></p>
+  <button class="js-more">More Logs</button>
+
+</div>
+
+
+
+
+
+
+  <!--<div>
+    <% @dailylogs.each_with_index do |dailylog, i| %>
+      <% if dailylog.baby %>
+        <%= link_to dailylog.baby.name, baby_path(dailylog.baby) %><br>
+        <% if i == 0 %>
+          <%= render partial: "dailylog", locals: { dailylog: dailylog } %>
+        <% end %>
+      <% end %>
+    <% end %><br>
+  </div> -->
