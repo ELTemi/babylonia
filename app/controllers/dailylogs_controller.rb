@@ -31,6 +31,17 @@ class DailylogsController < ApplicationController
     @dailylog = Dailylog.find(params[:id])
   end
 
+  def baby_logs
+    baby = Baby.find(params[:id])
+    render json: baby.dailylogs
+  end
+
+  def logs
+    dailylogs = Dailylog.all.order(:time_in)
+    render json: dailylogs
+  end
+
+
   private
 
   def dailylog_params
