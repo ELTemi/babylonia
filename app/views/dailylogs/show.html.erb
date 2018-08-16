@@ -1,5 +1,5 @@
 <h1>Log Details</h1>
-Baby: <strong><%= @dailylog.baby.name %></strong><br>
+<h1 class="logBaby">Baby: <strong><%= @dailylog.baby.name %></strong><br>
 <%= render partial: "dailylog", locals: { dailylog: @dailylog } %>
 
 <a href="#" class="js-next" data-id="<%=@dailylog.id%>">Next...</a>
