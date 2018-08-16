@@ -10,4 +10,12 @@ class Dailylog < ApplicationRecord
   def date_format_for_time_out
     time_out.strftime("%A, %B %dth, %Y")
   end
+
+  def time_in_format
+    time_in.strftime("%r")
+  end
+
+  def time_out_format
+    time_out.strftime("%r")
+  end
 end
