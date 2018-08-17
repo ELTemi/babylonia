@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   get '/logs', to: 'dailylogs#logs'
   get '/babies/:id/logs', to: 'dailylogs#baby_logs'
   get '/dailylogs/:id/log', to: 'dailylogs#nextLog'
+  get '/babies/:id/baby', to: 'babies#nextBaby'
+  
+
 
 
 
