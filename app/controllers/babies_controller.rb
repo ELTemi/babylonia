@@ -5,7 +5,7 @@ class BabiesController < ApplicationController
   def create
     @baby = Baby.create(baby_params)
     mom = Mom.new
-    redirect_to @baby.mom
+    render json: @baby, status: 201
   end
 
   def edit
@@ -24,6 +24,7 @@ class BabiesController < ApplicationController
 
   def show
     @baby = Baby.find(params[:id])
+    @babies = @baby.mom.babies
     if check_mom
       render :show
     else
@@ -32,6 +33,12 @@ class BabiesController < ApplicationController
       render :index
     end
   end
+
+  def nextBaby
+    baby = Baby.find(params[:id])
+    render json: baby
+  end
+
 
   private
 
