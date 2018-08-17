@@ -4,20 +4,14 @@
   <%= link_to @baby.name, baby_path(@baby) %><br>
 <% end %>
 
-
 <div>
-  <% @dailylogs.each do |dailylog| %>
-      <%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %> <br>
-  <% end %><br>
-</div>
-
-
-<!--<div class="logs">
-  <% if @dailylogs[0].baby %>
-    <%= link_to @dailylogs[0].baby.name, baby_path(@dailylogs[0].baby) %><br>
-    <%= render partial: "dailylog", locals: { dailylog: @dailylogs[0] } %>
+  <% if @dailylogs.count > 0 %>
+    <% @dailylogs.each do |dailylog| %>
+        <%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %> <br>
+    <% end %><br>
+  <% else%>
+    <p>There are no logs for this baby!</p>
   <% end %>
-  <p><strong>There are <%= @dailylogs.count - 1 %> logs left to see. Click the Button below to see all logs</strong></p>
-  <button class="js-more">More Logs</button>
 
-</div> -->
+
+</div>
