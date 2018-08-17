@@ -1,14 +1,14 @@
-<h1>Hi, Baby <%= @baby.name %></h1>
+<h1 class="babyName">Hi, Baby <%= @baby.name %></h1>
 <%= render partial: "baby", locals: { baby: @baby } %>
 
-<h3><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
+<h3 id="babyMom"><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
 <h4 class="logs-js" data-id="<%= @baby.id %>"><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
-<p>There are <%= @baby.dailylogs.count %> logs. Click the Button below to see all logs</p>
+<p class="logs-js">There are <%= @baby.dailylogs.count %> logs. Click the Button below to see all logs</p>
 <button class="js-more">More Logs</button>
 
-<ul class="baby-logs">
+<div id="babyLogs">
 
-</ul>
+</div>
 
 <!--<ul>
   <% @baby.dailylogs.each do |dailylog| %>
@@ -16,4 +16,7 @@
   <% end %>
 </ul> -->
 
-<p><%= link_to "Edit Baby's profile", edit_baby_path(@baby)%></p>
+<div class="">
+  <p id="editBaby"><%= link_to "Edit Baby's profile", edit_baby_path(@baby)%></p>
+  <a href="#" class="js-next-baby" data-id="<%=@baby.id%>">Next baby</a>
+</div>
