@@ -16,5 +16,4 @@
 //= require activestorage
 //= require_tree
 //= require dailylog
-//= require caregiver
 //= require baby
