@@ -41,6 +41,7 @@ class MomsController < ApplicationController
     end
   end
 
+
   def show
     @mom = Mom.find(params[:id])
     if !@mom.blank? && @mom.email == current_user.email
