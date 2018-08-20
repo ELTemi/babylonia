@@ -7,7 +7,7 @@
 <div>
   <% if @dailylogs.count > 0 %>
     <% @dailylogs.each do |dailylog| %>
-        <%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %> <br>
+        <p id="log_id" data-id="<%=dailylog.id %>"><%= link_to dailylog.date_format_for_time_in, dailylog_path(dailylog) %></p><br>
     <% end %><br>
   <% else%>
     <p>There are no logs for this baby!</p>
