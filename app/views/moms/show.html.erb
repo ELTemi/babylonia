@@ -1,6 +1,8 @@
 
 <h1>Welcome <%= @mom.name %><br></h1>
 
+
+
 <%= render partial: "mom", locals: { mom: @mom } %>
 
 <h3>Babies on profile</h3>
@@ -8,7 +10,7 @@
 <% @mom.babies.each do |baby| %>
   <p id="babies" data-id="<%= baby.id %>"><%= link_to baby.name, baby_path(baby) %> - <%= link_to "See all Logs for #{baby.name} ", baby_dailylogs_path(baby) %><br></p>
 <% end %>
-<p id="babyName"></p>  <p><a id="babyLogs"></a></p>
+
 
 
 
@@ -31,8 +33,10 @@
   Select a Caregiver
   <%= f.collection_select :caregiver_id, Caregiver.all, :id, :name %><br>
   <%= f.submit %>
-  <input type="button" id="reset-form" value="Reset" />
 <% end %>
+
+<p id="babyName"></p>  <p><a id="babyLogs"></a></p>
+
 
 
 
