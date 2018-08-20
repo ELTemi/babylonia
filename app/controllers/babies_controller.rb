@@ -19,12 +19,19 @@ class BabiesController < ApplicationController
   end
 
   def index
-    @babies = Baby.all
+    if mom_or_caregiver
+      @babies = mom_or_caregiver.babies
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @babies}
+      end
+    else
+      @babies = Baby.all
+    end
   end
 
   def show
     @baby = Baby.find(params[:id])
-    @babies = @baby.mom.babies
     if check_mom
       render :show
     else
@@ -47,7 +54,11 @@ class BabiesController < ApplicationController
   end
 
   def check_mom
-      (@baby.mom.email ==  current_user.email) || (@baby.caregiver.email == current_user.email)
+    (@baby.mom.email ==  current_user.email) || (@baby.caregiver.email == current_user.email)
+  end
+
+  def mom_or_caregiver
+    Mom.find_by(email: current_user.email) || Caregiver.find_by(email: current_user.email)
   end
 
 

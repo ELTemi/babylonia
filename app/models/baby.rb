@@ -7,4 +7,5 @@ class Baby < ApplicationRecord
   validates_uniqueness_of :name, scope: :mom_id, message: "This baby has already been added, check name"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+
 end
