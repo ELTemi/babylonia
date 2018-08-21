@@ -18,7 +18,6 @@ function showMoreLogs() {
       logs.forEach(function(log) {
         logsList +=
         '<button class="js-next"' + "data-id=" + `${log["id"]}` + '>' + log["date_format_for_time_in"] + '</button>' + '<br>' +
-        '<li>' + '<strong>' + log["date_format_for_time_in"] + '</strong>'+ '<br>' +
         '<strong>Time In: </strong>' +  log["time_in_format"] + '<br>' +
         '<strong>Naps: </strong>' + log["nap"] + ' times' + '<br>' +
         '<strong>Meal: </strong>' + log["meal"] + ' times' +  '<br>' +
