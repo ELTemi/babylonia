@@ -24,7 +24,6 @@ function addEventListenersForBaby() {
 }
 
 
-
 function showNextBaby() {
     var baby_id = $('#baby-id').attr('data-baby-id');
 
@@ -46,7 +45,6 @@ function showNextBaby() {
       $("#editBaby a").attr("href", `/babies/${data["id"]}/edit`)
       $("#editBaby a").text("Edit " + data["name"] + " Profile")
       $("h3#babyMom").empty()
-      $("button.js-more").empty()
       $("h4.logs-js").empty()
       $("p.logs-js").text("Logs")
 
