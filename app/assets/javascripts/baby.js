@@ -82,9 +82,16 @@ function Baby(baby){
 }
 
 Baby.prototype.babyInfo = function () {
-  $("#babyName").text(`New Baby has been sucessfully Created:
-    Name: ${this.name}
-    Sex: ${this.sex}
-    Date of Birth: ${this.dob}
-    Emergency Contact: ${this.emergency_contact}`)
+  $("#newBabyName").text(`New Baby's Profile has been sucessfully Created! Name: ${this.name}`)
+  $("#newBabySex").text(`Sex: ${this.sex}`)
+  $("#newBabyAllergies").text(`Date of Birth: ${this.dob}`)
+  $("#newBabyEmergencyContact").text(`Emergency Contact: ${this.emergency_contact}`)
 };
+
+function clearForm() {
+  $("#baby_name").val('')
+  $("#baby_emergency_contact").val('')
+  $("#baby_dob").val('')
+  $("#baby_sex").val('')
+  $("#baby_allergies").val('')
+}
