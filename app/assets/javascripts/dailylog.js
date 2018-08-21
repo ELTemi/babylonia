@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 function addEventListeners() {
   $(".js-more").click(() => showMoreLogs())
-  $(".js-next").click(() => showNextLog())
 }
 
 
@@ -59,24 +58,4 @@ function showMoreLogs() {
       $("div.logs").append(logsList)
     })
   }
-}
-
-function showNextLog() {
-  $.get("/logs", function(data) {
-    for (i= 0; i < data.length; i++) {
-      var nextId = data[i].id
-      $.get("/dailylogs/" + nextId + "/log", function(data) {
-        const log = data
-        $(".logBaby").text("Baby: " + log["baby"]["name"])
-        $(".logDay").text(log["date_format_for_time_in"])
-        $(".logTimeIn").text("Time In: " + log["time_in_format"])
-        $(".logNap").text("Napped " + log["nap"] + " times")
-        $(".logMeal").text("Ate " + log["meal"] + " times")
-        $(".logPlay").text("Played for " + log["play_time"] + " hours")
-        $(".logDiaper").text("Changed diapers " + log["diaper"] + " times")
-        $(".logComments").text("General Comments for Today: " + log["summary"])
-        $(".logTimeOut").text("Time Out: " + log["time_out_format"])
-      })
-    }
-  });
 }
