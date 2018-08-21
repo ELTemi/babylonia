@@ -10,7 +10,7 @@ function addEventListeners() {
 
 
 function showMoreLogs() {
-  var babyId = $("h4.logs-js").data("id")
+  var babyId = $('#baby-id').attr('data-baby-id')
   if (babyId) {
     $.get("/babies/" + babyId + "/logs", function(data) {
       const logs = data
