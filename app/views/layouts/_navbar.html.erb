@@ -5,8 +5,7 @@
     <li class="nav"><a href="<%= root_url %>"/>Home</a></li>
     <li class="nav"><%= link_to "Your Profile" , mom_path(@mom) %><br></li>
     <li class="nav"><%= link_to "Logout" , logout_path, method: :delete %><br></li>
-    <li class="nav"><a href="<%= "/moms" %>"/>All Moms</a></li>
-    <li class="nav"><a href="<%= "/babies" %>"/>All Babies</a></li>
+    <li class="nav"><a href="<%= "/caregivers" %>"/>All Caregivers</a></li>
 
   <% else logged_in_as_caregiver? %>
 
