@@ -42,7 +42,8 @@ class BabiesController < ApplicationController
   end
 
   def nextBaby
-    baby = Baby.find(params[:id])
+    owner = mom_or_caregiver
+    baby = owner.babies.where('babies.id > ?', params[:id]).first || owner.babies.first
     render json: baby
   end
 
