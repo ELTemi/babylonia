@@ -1,8 +1,8 @@
-<h1 class="babyName">Hi, Baby <%= @baby.name %></h1>
+<h1 class="babyName" id='baby-id' data-baby-id="<%= @baby.id %>">Hi, Baby <%= @baby.name %></h1>
 <%= render partial: "baby", locals: { baby: @baby } %>
 
 <h3 id="babyMom"><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
-<h4 class="logs-js" data-id="<%= @baby.id %>"><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
+<h4 class="logs-js"><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
 <p class="logs-js">There are <%= @baby.dailylogs.count %> logs. Click the Button below to see all logs</p>
 <button class="js-more">More Logs</button>
 
