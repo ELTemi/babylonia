@@ -1,5 +1,4 @@
 <h1>Log Details</h1>
 <h1 class="logBaby">Baby: <strong><%= @dailylog.baby.name %></strong><br>
 <%= render partial: "dailylog", locals: { dailylog: @dailylog } %>
-
-<a href="#" class="js-next" data-id="<%=@dailylog.id%>">Next...</a>
+<%= link_to "See all Logs for #{@dailylog.baby.name} ", baby_dailylogs_path(@dailylog.baby) %><br></p>
