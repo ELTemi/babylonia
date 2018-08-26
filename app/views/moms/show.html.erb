@@ -7,9 +7,14 @@
 
 <h3>Babies on profile</h3>
 
-<% @mom.babies.each do |baby| %>
-  <p id="babies" data-id="<%= baby.id %>"><%= link_to baby.name, baby_path(baby) %> - <%= link_to "See all Logs for #{baby.name} ", baby_dailylogs_path(baby) %><br></p>
-<% end %>
+<div id="baby-link">
+  <% @mom.babies.each do |baby| %>
+    <p data-id="<%= baby.id %>"><%= link_to baby.name, baby_path(baby) %> - <%= link_to "See all Logs for #{baby.name} ", baby_dailylogs_path(baby) %><br></p>
+  <% end %>
+</div>
+
+
+
 
 
 
