@@ -47,6 +47,8 @@ function Baby(baby){
 
 Baby.prototype.babyInfo = function () {
   $("#newBabyName").text(`New Baby's Profile has been sucessfully Created! Name: ${this.name}`)
+  $("div#baby-link").append(`<a href="/babies/${this.id}">${this.name}</a> - <a href="/babies/${this.id}/dailylogs">See all Logs for ${this.name}</a>`)
+
   $("#newBabySex").text(`Sex: ${this.sex}`)
   $("#newBabyAllergies").text(`Date of Birth: ${this.dob}`)
   $("#newBabyEmergencyContact").text(`Emergency Contact: ${this.emergency_contact}`)
@@ -63,9 +65,11 @@ function clearForm() {
 function logShow(logs) {
 
   var logsList = ""
+  var moreText = $(".js-more").text()
+
   logs.forEach(function(log) {
     logsList +=
-    '<li>' + '<strong>' + log["date_format_for_time_in"] + '</strong>'+ '<br>' +
+    '<h3>' + '<strong>' + log["date_format_for_time_in"] + '</strong>' + '</h3>' +
 
     '<strong>Time In: </strong>' +  log["time_in_format"] + '<br>' +
     '<strong>Naps: </strong>' + log["nap"] + ' times' + '<br>' +
@@ -74,14 +78,16 @@ function logShow(logs) {
     '<strong>Meds: </strong>' + log["meds"] + '<br>' +
     '<strong>Playtime: </strong>' + log["play_time"] + ' times' +  '<br>' +
     '<strong>Summary: </strong>' + log["summary"] + '<br>' +
-    '<strong>Time Out: </strong>' + log["time_out_format"] + '<br>' +
-    '</li>'
+    '<strong>Time Out: </strong>' + log["time_out_format"] + '<br>'
   })
 
-  $("h4.logs-js").empty()
-  $("p.logs-js").text("Logs")
   $("div#babyLogs").empty();
-  $("div#babyLogs").append(logsList);
+  $("div#babyLogs").append(logsList)
+  if (moreText === "Hide Logs") {
+    $(".js-more").text("More Logs")
+  } else {
+    $(".js-more").text("Hide Logs")
+  };
 }
 
 function nextBabyShow(data) {
