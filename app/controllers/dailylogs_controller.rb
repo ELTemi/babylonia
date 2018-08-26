@@ -21,7 +21,10 @@ class DailylogsController < ApplicationController
   def index
     if params[:baby_id]
       @baby = Baby.find(params[:baby_id])
-      @dailylogs = @baby.dailylogs.order(:time_in)
+      respond_to do |format|
+        format.html {render :index}
+        format.json {render json: @baby.dailylogs.all.order(:time_in)}
+      end
     else
       @dailylogs = Dailylog.all.order(:time_in)
     end
@@ -30,17 +33,6 @@ class DailylogsController < ApplicationController
   def show
     @dailylog = Dailylog.find(params[:id])
   end
-
-  def baby_logs
-    baby = Baby.find(params[:id])
-    render json: baby.dailylogs
-  end
-
-  def logs
-    dailylogs = Dailylog.all.order(:time_in)
-    render json: dailylogs
-  end
-
 
   private
 
