@@ -2,45 +2,38 @@ $(document).ready(function() {
   addEventListeners()
 });
 
-var clicks = 0
 
 
 function addEventListeners() {
   $(".js-more").click(function() {
-    if (clicks % 2 == 0) {
+    var moreText = $(".js-more").text()
+    if (moreText === "Hide Logs") {
       showMoreLogs()
-      $("#babyLogs").show();
+      $("#babyLogs").hide()
     } else {
       showMoreLogs()
-      $("#babyLogs").hide();
+      $("#babyLogs").show()
     }
-    ++clicks;
   })
 }
 
 
 function showMoreLogs() {
   var babyId = $('#baby-id').attr('data-baby-id')
-  if (babyId) {
-    $.get("/babies/" + babyId + "/logs", function(data) {
-      const logs = data
-      logData(logs)
-    })
-  } else {
-    $.get("/logs", function(data) {
-      const logs = data
-      logData()
-    })
-  }
+  $.getJSON("/babies/" + babyId + "/dailylogs", function(data) {
+    const logs = data
+    logData(logs)
+  })
 }
 
 function logData(logs) {
   var logsList = ""
+  var moreText = $(".js-more").text()
 
   logs.forEach(function(log) {
     logsList +=
 
-    '<button class="js-next"' + "data-id=" + `${log["id"]}` + '>' + log["date_format_for_time_in"] + '</button>' + '<br>' +
+    '<h3>' + '<strong>' + log["date_format_for_time_in"] + '</strong>' + '</h3>' +
 
     '<strong>Time In: </strong>' +  log["time_in_format"] + '<br>' +
     '<strong>Naps: </strong>' + log["nap"] + ' times' + '<br>' +
@@ -49,10 +42,15 @@ function logData(logs) {
     '<strong>Meds: </strong>' + log["meds"] + '<br>' +
     '<strong>Playtime: </strong>' + log["play_time"] + ' times' +  '<br>' +
     '<strong>Summary: </strong>' + log["summary"] + '<br>' +
-    '<strong>Time Out: </strong>' + log["time_out_format"] + '<br>' +
-    '</li>'
+    '<strong>Time Out: </strong>' + log["time_out_format"] + '<br>'
   })
 
   $("div#babyLogs").empty();
   $("div#babyLogs").append(logsList)
+  if (moreText === "Hide Logs") {
+    $(".js-more").text("More Logs")
+  } else {
+    $(".js-more").text("Hide Logs")
+  }
+
 }
