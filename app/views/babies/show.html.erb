@@ -3,6 +3,7 @@
 
 <h3 id="babyMom"><%= link_to @baby.name + "'s Mom", mom_path(@baby.mom)%></h3>
 <h4 class="logs-js"><%= link_to "All Logs", baby_dailylogs_path(@baby) %></h4>
+
 <p class="logs-js">There are <%= @baby.dailylogs.count %> logs. Click the Button below to see all logs</p>
 <button class="js-more">More Logs</button>
 
@@ -10,11 +11,6 @@
 
 </div>
 
-<!--<ul>
-  <% @baby.dailylogs.each do |dailylog| %>
-    <li><%= link_to dailylog.date_format_for_time_in, baby_dailylog_path(@baby, dailylog) %></li>
-  <% end %>
-</ul> -->
 
 <div class="">
   <p id="editBaby"><%= link_to "Edit Baby's profile", edit_baby_path(@baby)%></p>
