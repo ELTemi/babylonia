@@ -31,11 +31,6 @@ class DailylogsController < ApplicationController
     @dailylog = Dailylog.find(params[:id])
   end
 
-  def nextLog
-    dailylog = Dailylog.find(params[:id])
-    render json: dailylog
-  end
-
   def baby_logs
     baby = Baby.find(params[:id])
     render json: baby.dailylogs
