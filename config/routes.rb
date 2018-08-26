@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#logout'
   get '/auth/facebook/callback' => 'sessions#facebook_create'
-  get '/logs', to: 'dailylogs#logs'
-  get '/babies/:id/logs', to: 'dailylogs#baby_logs'
-  get '/dailylogs/:id/log', to: 'dailylogs#nextLog'
+  #get '/logs', to: 'dailylogs#logs'
+  #get '/babies/:id/logs', to: 'dailylogs#baby_logs'
+  #get '/dailylogs/:id/log', to: 'dailylogs#nextLog'
   get '/babies/:id/baby', to: 'babies#nextBaby'
 
 
