@@ -40,6 +40,7 @@ gem 'omniauth-facebook'
 
 gem 'rails-assets-bootstrap', ">= 4.0.0.alpha.2"
 gem 'rails-assets-tether'
+gem 'bootstrap-sass'
 
 gem 'dotenv-rails'
 # Use Redis adapter to run Action Cable in production
