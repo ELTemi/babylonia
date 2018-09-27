@@ -46,12 +46,12 @@ function Baby(baby){
 }
 
 Baby.prototype.babyInfo = function () {
-  $("#newBabyName").text(`New Baby's Profile has been sucessfully Created! Name: ${this.name}`)
-  $("div#baby-link").append(`<a href="/babies/${this.id}">${this.name}</a> - <a href="/babies/${this.id}/dailylogs">See all Logs for ${this.name}</a>`)
+  $("#newBabyName").text("New Baby's Profile has been sucessfully Created! Name:" + this.name)
+  $("div#baby-link").append('<a href="/babies/"' + this.id + '>' + this.name + '</a>' + ' -' + '<a href="/babies/"' + this.id + '"/dailylogs" >' + 'See all Logs for ' + this.name + '</a>')
 
-  $("#newBabySex").text(`Sex: ${this.sex}`)
-  $("#newBabyAllergies").text(`Date of Birth: ${this.dob}`)
-  $("#newBabyEmergencyContact").text(`Emergency Contact: ${this.emergency_contact}`)
+  $("#newBabySex").text("Sex: " + this.sex)
+  $("#newBabyAllergies").text("Date of Birth: " + this.dob)
+  $("#newBabyEmergencyContact").text("Emergency Contact: " + this.emergency_contact)
 };
 
 function clearForm() {
@@ -99,7 +99,7 @@ function nextBabyShow(data) {
   $("#babySex").text("Sex: " + data["sex"])
   $("#babyAllergies").text("Allergies: " + data["allergies"])
   $("#babyDOB").text("Date of Birth: " + data["dob"])
-  $("#editBaby a").attr("href", `/babies/${data["id"]}/edit`)
+  $("#editBaby a").attr("href", '/babies/' + data["id"] + '/edit')
   $("#editBaby a").text("Edit " + data["name"] + " Profile")
   $("h3#babyMom").empty()
 }
